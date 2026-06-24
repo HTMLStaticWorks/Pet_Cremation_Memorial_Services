@@ -262,6 +262,29 @@
             .prep-split {
                 grid-template-columns: 1fr;
                 gap: 3rem;
+                text-align: center;
+            }
+            .prep-split .btn {
+                display: inline-block;
+            }
+            .prep-list-items {
+                align-items: center;
+            }
+            .prep-item-box {
+                text-align: left;
+                width: 100%;
+            }
+        }
+
+        /* Tablet: center orphan kit card */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .kit-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .kit-grid > *:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                max-width: calc(50% - 1rem);
+                justify-self: center;
             }
         }
     </style>
@@ -291,6 +314,17 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="resources.html">Resources</a></li>
+                <li class="nav-controls">
+                    <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark/light mode">
+                        <span class="icon-moon">🌙</span>
+                        <span class="icon-sun">☀️</span>
+                        <span class="toggle-label">Dark</span>
+                    </button>
+                    <button id="rtl-toggle-btn" class="rtl-toggle" aria-label="Toggle RTL/LTR direction">
+                        <span class="rtl-icon">⇆</span>
+                        <span class="rtl-label">RTL</span>
+                    </button>
+                </li>
                 <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
             </ul>
         </div>

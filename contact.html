@@ -30,6 +30,9 @@
             resize: vertical;
             min-height: 150px;
         }
+        @media (max-width: 1024px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
         @media (max-width: 768px) {
             .contact-grid { grid-template-columns: 1fr; }
         }
@@ -128,6 +131,9 @@
                 gap: 2.5rem;
                 text-align: center;
             }
+            .portal-grid .btn {
+                display: inline-block;
+            }
         }
     </style>
 </head>
@@ -152,6 +158,17 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html" class="active">Contact</a></li>
                 <li><a href="resources.html">Resources</a></li>
+                <li class="nav-controls">
+                    <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark/light mode">
+                        <span class="icon-moon">🌙</span>
+                        <span class="icon-sun">☀️</span>
+                        <span class="toggle-label">Dark</span>
+                    </button>
+                    <button id="rtl-toggle-btn" class="rtl-toggle" aria-label="Toggle RTL/LTR direction">
+                        <span class="rtl-icon">⇆</span>
+                        <span class="rtl-label">RTL</span>
+                    </button>
+                </li>
                 <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
             </ul>
         </div>
