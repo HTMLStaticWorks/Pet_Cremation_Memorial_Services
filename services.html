@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | FarmVet Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Process Section Styles */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .process-step-card {
+            text-align: center;
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+        .process-step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent);
+        }
+        .process-badge {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 10px rgba(27, 73, 56, 0.2);
+        }
+        .process-step-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+        .process-step-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Pharmacy & Diagnostics Layout */
+        .support-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .support-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .support-feature-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .support-feature-item span.icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+        .support-feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        .support-feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 992px) {
+            .support-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                🐴 <span>FarmVet</span> Care
+            </a>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header" style="background-image: linear-gradient(rgba(27, 42, 71, 0.9), rgba(27, 42, 71, 0.9)), url('images/services.png');">
+        <div class="container fade-in">
+            <h1>Our Veterinary Services</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Comprehensive, professional medical care for horses, cattle, and farm livestock, delivered directly to your property.</p>
+        </div>
+    </div>
+
+    <section class="section container">
+        <div class="grid">
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/equine_care.png" alt="Equine Care" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Equine Health Care</h3>
+                <p>Full-service equine medicine including wellness exams, lameness diagnostics, digital radiography, and ultrasound. We handle performance horses, working horses, and beloved companions.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/livestock_care.png" alt="Livestock Veterinary" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Livestock Veterinary</h3>
+                <p>Herd health consulting, individual sick animal exams, and preventative care protocols for cattle, sheep, goats, and pigs. We help maximize the health and productivity of your herd.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/preventive_programs.png" alt="Vaccinations" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Vaccinations</h3>
+                <p>Core and risk-based vaccination protocols tailored specifically to your geographic location and the individual needs of your animals to protect against infectious diseases.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h3>Health Certificates</h3>
+                <p>Official Certificates of Veterinary Inspection (CVIs), Coggins testing (EIA), and required documentation for travel, shows, sales, and interstate transport.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>Dental Care</h3>
+                <p>Routine power floating, dental charting, extractions, and advanced dentistry for horses to ensure proper mastication, comfort, and optimal performance.</p>
+            </div>
+            <div class="card fade-in">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/reproductive_services.png" alt="Reproductive Services" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Reproductive Services</h3>
+                <p>Breeding soundness exams, artificial insemination, ultrasound pregnancy diagnosis, foaling/calving assistance, and neonatal care.</p>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.1s;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/emergency.png" alt="Emergency & Trauma Care" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Emergency & Trauma Care</h3>
+                <p>24/7 round-the-clock emergency care including laceration repairs, colic treatments, ophthalmic emergencies, and critical fluid therapy administered right on your farm.</p>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.2s;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/mobile_clinic.png" alt="Lameness & Sports Medicine" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Lameness & Sports Medicine</h3>
+                <p>Comprehensive lameness diagnostics, joint flexions, diagnostic nerve blocks, digital ultrasound assessment, and custom therapeutic plans to maximize athletic longevity.</p>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.3s;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/services.png" alt="Internal Medicine & Diagnostics" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Internal Medicine & Diagnostics</h3>
+                <p>Advanced diagnostic procedures including mobile endoscopy, high-definition ultrasonography, radiography, and fast on-site blood chemistry diagnostics.</p>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.4s;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </div>
+                <h3>Geriatric & Chronic Care</h3>
+                <p>Custom health plans, metabolic evaluations (Cushings/PPID), degenerative arthritis treatments, and senior wellness checks to ensure comfort for aging horses and cattle.</p>
+            </div>
+            <div class="card fade-in" style="transition-delay: 0.5s;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/nutritional_consulting.png" alt="Biosecurity & Herd Consulting" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Biosecurity & Herd Consulting</h3>
+                <p>Individualized herd health audits, vaccine scheduling, pasture stocking recommendations, parasite control management (fecal egg counts), and nutritional consulting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1: THE VISIT PROCESS
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Our Visit Process: What to Expect</h2>
+                <p style="max-width: 600px; margin: 0 auto;">We make veterinary visits simple and stress-free for both you and your animals.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step-card fade-in">
+                    <div class="process-badge">1</div>
+                    <h3>Pre-Visit Intake</h3>
+                    <p>Request an appointment online or call us with a summary of the care or diagnostics your animal requires.</p>
+                </div>
+                
+                <div class="process-step-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="process-badge">2</div>
+                    <h3>Route Pairing</h3>
+                    <p>We confirm your booking and match it with our weekly route map to minimize dispatch fees.</p>
+                </div>
+                
+                <div class="process-step-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="process-badge">3</div>
+                    <h3>Ambulatory Exam</h3>
+                    <p>Our veterinary unit arrives at your farm equipped with required medicines, diagnostic tools, and portable labs.</p>
+                </div>
+                
+                <div class="process-step-card fade-in" style="transition-delay: 0.3s;">
+                    <div class="process-badge">4</div>
+                    <h3>Portal Sync</h3>
+                    <p>Exam results, records, and prescriptions are uploaded instantly to your digital portal for easy tracking.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: PHARMACY & DIAGNOSTIC SUPPORT
+         ========================================== -->
+    <section class="section container">
+        <div class="support-split">
+            <div class="fade-in">
+                <h2>Mobile Pharmacy & Laboratory Support</h2>
+                <p>To ensure prompt diagnostics and treatments, our mobile veterinary units carry active medication inventory and blood diagnostics directly to your property.</p>
+                <p>This allows us to administer first-dose therapeutics immediately for acute conditions, saving critical recovery time.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-primary">Submit Prescription Request</a>
+                </div>
+            </div>
+            
+            <div class="support-features fade-in" style="transition-delay: 0.2s;">
+                <!-- Item 1 -->
+                <div class="support-feature-item">
+                    <span class="icon">💊</span>
+                    <div>
+                        <h4>On-Board Pharmacy Inventory</h4>
+                        <p>Fully stocked with essential antibiotics, NSAIDs, dewormers, reproductive agents, and emergency medications.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="support-feature-item">
+                    <span class="icon">📦</span>
+                    <div>
+                        <h4>Portal Prescription Refills</h4>
+                        <p>Order routine medication refills directly through your secure client portal for delivery or clinic pickup.</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="support-feature-item">
+                    <span class="icon">🔬</span>
+                    <div>
+                        <h4>Reference Lab Integrations</h4>
+                        <p>Fast processing for complex panels, culture tests, biopsies, and cytological diagnostics via regional labs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section fade-in">
+        <h2>Need to schedule a service?</h2>
+        <p style="margin-bottom: 2rem; color: #E0E0E0;">Our mobile units are fully equipped to handle diagnostics and treatment on-site.</p>
+        <a href="contact.html" class="btn btn-secondary" style="background: transparent; color: var(--white); border-color: var(--white);">Book an Appointment</a>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FarmVet Care</h4>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">Services</a>
+                    <a href="coverage.html">Coverage Areas</a>
+                    <a href="emergency.html">Emergency Care</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contact</h4>
+                    <p>24/7 Equine & Livestock Emergency</p>
+                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 FarmVet Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

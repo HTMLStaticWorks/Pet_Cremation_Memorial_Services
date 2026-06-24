@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | FarmVet Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: var(--white);
+            border: 4px solid var(--accent);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; }
+        .content {
+            padding: 20px 30px;
+            background-color: var(--white);
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        @media screen and (max-width: 600px) {
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0; }
+        }
+
+        /* 1. Core Pillars Styles */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .pillar-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 0;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 4px solid transparent;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border-bottom-color: var(--primary);
+        }
+        .pillar-card img {
+            transition: var(--transition);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .pillar-card:hover img {
+            transform: scale(1.05);
+        }
+        .pillar-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+        .pillar-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        /* 3. History Timeline Section Styles */
+        .history-timeline {
+            max-width: 900px;
+            margin: 3.5rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+        .history-year-card {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .year-badge {
+            background: var(--navy);
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(27, 42, 71, 0.15);
+            min-width: 130px;
+        }
+        .history-year-card:nth-child(even) .year-badge {
+            background: var(--primary);
+        }
+        .year-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            flex-grow: 1;
+        }
+        .year-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .year-info p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* 4. Fleet Showcase Section Styles */
+        .fleet-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .fleet-checklist {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+        .fleet-check-item {
+            background: var(--white);
+            padding: 1.2rem 1.8rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            border-left: 4px solid var(--accent);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .fleet-check-item span.emoji {
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+        .fleet-check-item h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.05rem;
+        }
+        .fleet-check-item p {
+            margin-bottom: 0;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Support Team Grid */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .support-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: var(--transition);
+        }
+        .support-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border-color: var(--accent);
+        }
+        .support-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 12px rgba(27, 42, 71, 0.15);
+        }
+        .support-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.2rem;
+        }
+        .support-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .support-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .fleet-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .history-year-card {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .year-badge {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                🐴 <span>FarmVet</span> Care
+            </a>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header" style="background-image: linear-gradient(rgba(27, 42, 71, 0.9), rgba(27, 42, 71, 0.9)), url('images/hero.png');">
+        <div class="container fade-in">
+            <h1>About FarmVet Care</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Dedicated to the health, performance, and well-being of large animals for over 15 years.</p>
+        </div>
+    </div>
+
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Our Mission & Values</h2>
+            <p style="max-width: 800px; margin: 0 auto 3rem;">At FarmVet Care, our mission is to provide gold-standard, compassionate veterinary care to the equine and livestock communities. We value integrity, continuous education, and building lasting relationships with farm owners and stable managers.</p>
+        </div>
+
+        <div class="grid" style="margin-bottom: 5rem;">
+            <div class="card fade-in text-center">
+                <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 0;">15+</h1>
+                <h4 style="color: var(--navy);">Years of Experience</h4>
+            </div>
+            <div class="card fade-in text-center">
+                <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 0;">24/7</h1>
+                <h4 style="color: var(--navy);">Emergency Response</h4>
+            </div>
+            <div class="card fade-in text-center">
+                <h1 style="font-size: 3rem; color: var(--primary); margin-bottom: 0;">10k+</h1>
+                <h4 style="color: var(--navy);">Animals Treated</h4>
+            </div>
+        </div>
+
+        <div class="text-center fade-in">
+            <h2>Our Veterinary Team</h2>
+        </div>
+        <div class="timeline fade-in">
+            <div class="timeline-item left">
+                <div class="content" style="display: flex; gap: 1.5rem; align-items: center;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(229,169,60,0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                        <img src="images/vet_vance.png" alt="Dr. Sarah Jenkins" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.3rem;">Dr. Sarah Jenkins, DVM</h3>
+                        <p style="margin-bottom: 0; font-size: 0.9rem;"><strong>Founder & Lead Equine Specialist</strong><br>Dr. Jenkins brings 20 years of experience in equine sports medicine and lameness diagnostics. Certified by the American Board of Veterinary Practitioners (Equine Practice).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item right">
+                <div class="content" style="display: flex; gap: 1.5rem; align-items: center;">
+                    <div style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 2px solid rgba(229,169,60,0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+                        <img src="images/vet_cole.png" alt="Dr. Marcus Cole" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.3rem;">Dr. Marcus Cole, DVM</h3>
+                        <p style="margin-bottom: 0; font-size: 0.9rem;"><strong>Livestock & Herd Health Director</strong><br>Specializing in bovine reproduction and herd management, Dr. Cole ensures optimal productivity and health for dairy and beef operations across the county.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 1: CORE PILLARS
+         ========================================== -->
+    <section class="section container" style="border-top: 1px solid #eaeaea;">
+        <div class="text-center fade-in">
+            <h2>The Pillars of Our Practice</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Our daily clinical work is anchored by four fundamental values dedicated to large animal care.</p>
+        </div>
+        
+        <div class="pillars-grid">
+            <div class="pillar-card fade-in">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/services.png" alt="Clinical Excellence">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.5rem;">Clinical Excellence</h3>
+                    <p style="margin-bottom: 0;">Equipping our veterinary trucks with state-of-the-art diagnostic gear to enable hospital-grade on-site treatments.</p>
+                </div>
+            </div>
+            
+            <div class="pillar-card fade-in" style="transition-delay: 0.1s;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/mobile_clinic.png" alt="On-Site Convenience">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.5rem;">On-Site Convenience</h3>
+                    <p style="margin-bottom: 0;">Bringing advanced diagnostics and minor surgeries straight to your stables, eliminating transport stress.</p>
+                </div>
+            </div>
+            
+            <div class="pillar-card fade-in" style="transition-delay: 0.2s;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/equine_care.png" alt="Long-Term Partnership">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.5rem;">Long-Term Partnership</h3>
+                    <p style="margin-bottom: 0;">Providing routine checks and continuous communication to maximize the lifetime longevity of your herd.</p>
+                </div>
+            </div>
+            
+            <div class="pillar-card fade-in" style="transition-delay: 0.3s;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/preventive_programs.png" alt="Continuous Education">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.5rem;">Continuous Education</h3>
+                    <p style="margin-bottom: 0;">Actively training our practitioners in advanced equine therapies and bovine health protocols.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 2: THE HISTORY TIMELINE
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Our Journey & Milestones</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Trace the growth of FarmVet Care from a single-truck practice into the region's premier mobile clinic.</p>
+            </div>
+            
+            <div class="history-timeline">
+                <!-- 2011 -->
+                <div class="history-year-card fade-in">
+                    <div class="year-badge">2011</div>
+                    <div class="year-info">
+                        <h3>Company Foundation</h3>
+                        <p>Dr. Sarah Jenkins launches FarmVet Care with a single custom-outfitted pickup truck to service local equine properties within a 20-mile radius.</p>
+                    </div>
+                </div>
+                
+                <!-- 2016 -->
+                <div class="history-year-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="year-badge">2016</div>
+                    <div class="year-info">
+                        <h3>Route System Expansion</h3>
+                        <p>We expand our service radius to 50 miles, adding a second specialized truck and introducing dedicated Northern and Southern service route days.</p>
+                    </div>
+                </div>
+                
+                <!-- 2021 -->
+                <div class="history-year-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="year-badge">2021</div>
+                    <div class="year-info">
+                        <h3>Digital Diagnostics Integration</h3>
+                        <p>Upgrade our fleet with portable high-definition digital radiology (X-ray), soft-tissue ultrasound systems, and on-board chemistry lab analyzers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 3: SUPPORT TEAM SHOWCASE
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Our Practice Support Staff</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Meet the dedicated team members managing our clinic routing and assisting in clinical care.</p>
+        </div>
+        
+        <div class="support-grid">
+            <!-- Emily Davis -->
+            <div class="support-card fade-in">
+                <div class="support-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
+                    <svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="24" cy="24" r="24" fill="url(#emilyGrad)"/>
+                        <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="emilyGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1B4938"/>
+                                <stop offset="1" stop-color="#2C7A5D"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h3>Emily Davis, LVT</h3>
+                <span class="support-role">Lead Equine Veterinary Technician</span>
+                <p>Emily supports our equine clinicians during lameness diagnostics, joint injections, and on-site minor surgical procedures.</p>
+            </div>
+            
+            <!-- David Harris -->
+            <div class="support-card fade-in" style="transition-delay: 0.1s;">
+                <div class="support-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
+                    <svg width="80" height="80" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                        <circle cx="24" cy="24" r="24" fill="url(#davidGrad)"/>
+                        <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
+                        <defs>
+                            <linearGradient id="davidGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#1B2A47"/>
+                                <stop offset="1" stop-color="#E5A93C"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <h3>David Harris</h3>
+                <span class="support-role">Practice Coordinator & Dispatcher</span>
+                <p>David organizes our daily route coordinates, client schedule matching, and ensures emergency trucks dispatch rapidly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 4: FLEET SHOWCASE
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container fleet-split">
+            <!-- Left Column: Description & Checklist -->
+            <div class="fade-in">
+                <h2>Our Mobile Ambulatory Fleet</h2>
+                <p>To provide high-quality care without transporting stressed animals, we operate a fleet of customized four-wheel-drive mobile veterinary trucks.</p>
+                <p style="margin-bottom: 2rem;">Each unit functions as a self-contained clinic, prepped for both routine calls and emergency trauma treatments.</p>
+                
+                <div class="fleet-checklist">
+                    <!-- Item 1 -->
+                    <div class="fleet-check-item">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; padding: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"></path></svg>
+                        </span>
+                        <div>
+                            <h4>Automated Medical Refrigeration</h4>
+                            <p>Maintains precise temperatures for vaccines, diagnostics, and heat-sensitive therapeutics.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="fleet-check-item" style="transition-delay: 0.1s;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; padding: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline></svg>
+                        </span>
+                        <div>
+                            <h4>On-Board Auxiliary Power</h4>
+                            <p>Fitted with generator backups to run power floats, digital imaging computers, and analyzers.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="fleet-check-item" style="transition-delay: 0.2s;">
+                        <span style="display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 8px; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; padding: 8px;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v6c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 11v6c0 1.66 4 3 9 3s9-1.34 9-3v-6"></path></svg>
+                        </span>
+                        <div>
+                            <h4>Real-Time Portal Database Sync</h4>
+                            <p>Automatic synchronization to update digital client records immediately during farm visits.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Column: Premium Fleet Photograph -->
+            <div class="split-image fade-in" style="transition-delay: 0.3s; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); border: 1px solid rgba(0,0,0,0.05);">
+                <img src="images/mobile_clinic.png" alt="Mobile Ambulatory Fleet Truck" style="width: 100%; height: auto; display: block; object-fit: cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 5: COMMUNITY OUTREACH & WORKSHOPS
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Community & Agricultural Outreach</h2>
+            <p style="max-width: 600px; margin: 0 auto;">We believe in supporting the next generation of farmers and educating stable managers on basic first aid.</p>
+        </div>
+        
+        <div class="grid" style="margin-top: 3.5rem;">
+            <!-- Card 1 -->
+            <div class="card fade-in" style="border-left: 4px solid var(--primary);">
+                <h3>Youth Livestock Support</h3>
+                <p>We provide complimentary veterinary consults and support for local 4-H clubs and FFA (Future Farmers of America) youth livestock projects at county fairs.</p>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card fade-in" style="border-left: 4px solid var(--accent); transition-delay: 0.1s;">
+                <h3>First Aid Workshops</h3>
+                <p>We host regular spring seminars teaching horse owners and barn managers how to measure vitals (pulse, respiration, temperature) and triage colic signs.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FarmVet Care</h4>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">Services</a>
+                    <a href="coverage.html">Coverage Areas</a>
+                    <a href="emergency.html">Emergency Care</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contact</h4>
+                    <p>24/7 Equine & Livestock Emergency</p>
+                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 FarmVet Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
