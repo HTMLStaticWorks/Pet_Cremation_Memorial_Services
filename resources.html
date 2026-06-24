@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources & Animal Care | FarmVet Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--navy);
+            transition: var(--transition);
+        }
+        .faq-question:hover { background: var(--light-gray); }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        .faq-item.active .faq-question {
+            color: var(--primary);
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 1. Video Library Styles */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        .video-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+            border-color: var(--accent);
+        }
+        .video-thumb {
+            height: 180px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            color: var(--white);
+        }
+        .play-button {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--highlight);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(229, 169, 60, 0.4);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+        }
+        .video-info {
+            padding: 1.5rem;
+        }
+        .video-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        .video-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* 2. Industry Resources Styles */
+        .partner-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        .partner-link-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            border: 1px solid rgba(0,0,0,0.04);
+            text-align: center;
+            transition: var(--transition);
+        }
+        .partner-link-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        .partner-logo-box {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        .partner-link-card h4 {
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .partner-link-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .partner-btn {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        /* 3. Pharmacy Policies Layout */
+        .policy-banner-box {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            margin-top: 3.5rem;
+        }
+
+        /* 4. Bulletin Form Styles */
+        .bulletin-box {
+            background-image: linear-gradient(135deg, var(--primary) 0%, var(--navy) 100%);
+            color: var(--white);
+            border-radius: 16px;
+            padding: 4rem 3rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 4rem auto 0;
+            box-shadow: 0 20px 45px rgba(27, 42, 71, 0.15);
+        }
+        .bulletin-box h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        .bulletin-box p {
+            color: #E0E0E0;
+            margin-bottom: 2rem;
+        }
+        .bulletin-form {
+            display: flex;
+            gap: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+        }
+        .bulletin-input {
+            flex-grow: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+            font-family: inherit;
+            outline: none;
+        }
+        .bulletin-input:focus {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--highlight);
+        }
+        .bulletin-btn {
+            background: var(--highlight);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .bulletin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(229, 169, 60, 0.3);
+        }
+
+        @media (max-width: 600px) {
+            .bulletin-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                🐴 <span>FarmVet</span> Care
+            </a>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resources.html" class="active">Resources</a></li>
+                <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header" style="background-image: linear-gradient(rgba(27, 42, 71, 0.9), rgba(27, 42, 71, 0.9)), url('images/hero.png');">
+        <div class="container fade-in">
+            <h1>Resources & Animal Care</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Educational materials, health guides, and frequently asked questions for farm owners.</p>
+        </div>
+    </div>
+
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Educational Guides</h2>
+        </div>
+        <div class="grid">
+            <!-- Card 1 -->
+            <div class="card fade-in" style="height: 100%; padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/equine_care.png" alt="Horse Health Guides" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Horse Health Guides</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Download our comprehensive PDFs on recognizing signs of colic, managing laminitis risk factors, and senior horse care.</p>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; width: fit-content; font-size: 0.85rem;">Download PDF</a>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card fade-in" style="height: 100%; padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/preventive_programs.png" alt="Vaccination Schedules" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Vaccination Schedules</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Standard core and risk-based vaccination schedules for horses, cattle, and small ruminants tailored to our region.</p>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; width: fit-content; font-size: 0.85rem;">View Schedules</a>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card fade-in" style="height: 100%; padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 150px; width: 100%; overflow: hidden;">
+                    <img src="images/emergency.png" alt="Emergency Checklists" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);">
+                </div>
+                <div style="padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Emergency Checklists</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">Stable management tips and what to include in your farm's first-aid kit before the vet arrives.</p>
+                    </div>
+                    <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1.25rem; width: fit-content; font-size: 0.85rem;">View Checklist</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center fade-in" style="margin-top: 5rem; margin-bottom: 2rem;">
+            <h2>Frequently Asked Questions</h2>
+        </div>
+        <div class="fade-in" style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+                <div class="faq-question">How often should my horse's teeth be floated? <span>+</span></div>
+                <div class="faq-answer">
+                    <p style="margin-top: 1rem;">Generally, we recommend an annual dental exam for adult horses. Young horses (under 5) and senior horses (over 15) may require examinations every 6 months as their teeth change more rapidly.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What constitutes a veterinary emergency? <span>+</span></div>
+                <div class="faq-answer">
+                    <p style="margin-top: 1rem;">Signs of colic (pawing, rolling, looking at flanks), severe lacerations, sudden non-weight-bearing lameness, eye injuries, and difficulty giving birth (dystocia) are all absolute emergencies. When in doubt, always call.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Do you offer payment plans? <span>+</span></div>
+                <div class="faq-answer">
+                    <p style="margin-top: 1rem;">Payment is expected at the time of service. However, we do accept CareCredit and work with major equine insurance providers. Please discuss this with our office staff prior to your appointment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 1: VIDEO LIBRARY
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Clinical Video Care Library</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Watch our veterinarians demonstrate key first aid and health management skills directly in the barn.</p>
+            </div>
+            
+            <div class="video-grid">
+                <!-- Video 1 -->
+                <div class="video-card fade-in">
+                    <div class="video-thumb">
+                        <div class="play-button" onclick="alert('Playing Video: How to Wrap an Equine Foot...');">▶</div>
+                        <span style="position: absolute; bottom: 10px; left: 15px; background: rgba(0,0,0,0.6); padding: 0.2rem 0.5rem; font-size: 0.75rem; border-radius: 4px;">4:20</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>How to Wrap an Equine Foot</h4>
+                        <p>Learn step-by-step how to construct a durable hoof bandage for abscesses using gauze, Vetrap, and duct tape.</p>
+                    </div>
+                </div>
+                
+                <!-- Video 2 -->
+                <div class="video-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="video-thumb">
+                        <div class="play-button" onclick="alert('Playing Video: Measuring Large Animal Vitals...');">▶</div>
+                        <span style="position: absolute; bottom: 10px; left: 15px; background: rgba(0,0,0,0.6); padding: 0.2rem 0.5rem; font-size: 0.75rem; border-radius: 4px;">5:15</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>Measuring Large Animal Vitals</h4>
+                        <p>See the correct way to take temperature, pulse, and respiration (TPR) in horses, cattle, and goats safely.</p>
+                    </div>
+                </div>
+                
+                <!-- Video 3 -->
+                <div class="video-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="video-thumb">
+                        <div class="play-button" onclick="alert('Playing Video: Identifying Early Colic Symptoms...');">▶</div>
+                        <span style="position: absolute; bottom: 10px; left: 15px; background: rgba(0,0,0,0.6); padding: 0.2rem 0.5rem; font-size: 0.75rem; border-radius: 4px;">6:30</span>
+                    </div>
+                    <div class="video-info">
+                        <h4>Identifying Colic Symptoms</h4>
+                        <p>Dr. Sarah Jenkins breaks down early behavioral warning signs of colic and how to triage the situation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 2: INDUSTRY PARTNERS & FINANCIAL
+         ========================================== -->
+    <section class="section container" style="border-top: 1px solid #eaeaea;">
+        <div class="text-center fade-in">
+            <h2>Industry & Financial Resources</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Link out to professional agricultural organizations, veterinary associations, and financing portals.</p>
+        </div>
+        
+        <div class="partner-links-grid">
+            <!-- AAEP -->
+            <div class="partner-link-card fade-in">
+                <div class="partner-logo-box">🐎</div>
+                <h4>AAEP Care Guidelines</h4>
+                <p>American Association of Equine Practitioners owner education library.</p>
+                <a href="#" class="partner-btn">Visit Website &rarr;</a>
+            </div>
+            
+            <!-- AABP -->
+            <div class="partner-link-card fade-in" style="transition-delay: 0.1s;">
+                <div class="partner-logo-box">🐄</div>
+                <h4>AABP Cattle Resources</h4>
+                <p>American Association of Bovine Practitioners livestock guidelines.</p>
+                <a href="#" class="partner-btn">Visit Website &rarr;</a>
+            </div>
+            
+            <!-- CareCredit -->
+            <div class="partner-link-card fade-in" style="transition-delay: 0.2s;">
+                <div class="partner-logo-box">💳</div>
+                <h4>CareCredit Financing</h4>
+                <p>Submit credit applications online to coordinate veterinary financing.</p>
+                <a href="#" class="partner-btn">Apply Now &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 3: PHARMACY & PRESCRIPTION POLICIES
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container" style="max-width: 900px;">
+            <div class="text-center fade-in">
+                <h2>Pharmacy & Prescription Policies</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Guidelines regarding mobile drug inventory refills and script coordination rules.</p>
+            </div>
+            
+            <div class="policy-banner-box fade-in" style="margin-top: 3rem;">
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--navy); margin-bottom: 0.5rem;">⏳ Refill Processing Timelines</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0;">Prescription refills requested via the client portal require up to 48 hours for clinical authorization and compounding. Hand-delivery is completed on your next scheduled route day.</p>
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="color: var(--navy); margin-bottom: 0.5rem;">🩺 Required VCPR (Vet-Client-Patient Relationship)</h4>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0;">Under state law, a veterinarian must have examined your animal or herd within the past 12 months to establish a valid VCPR before issuing or refilling any prescription medications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 4: FIELD BULLETINS NEWSLETTER
+         ========================================== -->
+    <section class="section container">
+        <div class="bulletin-box fade-in">
+            <h2>Join Our Field Bulletins</h2>
+            <p>Subscribe to receive quarterly biosecurity updates, region-specific vaccine reminders, and seasonal herd health management advice.</p>
+            <form onsubmit="event.preventDefault(); alert('Subscribed successfully!');" class="bulletin-form">
+                <input type="email" class="bulletin-input" placeholder="Enter your email address" required>
+                <button type="submit" class="bulletin-btn">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="cta-section fade-in" style="display: none;">
+        <!-- Placeholder section to balance structure if needed, or keeping it empty -->
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FarmVet Care</h4>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">Services</a>
+                    <a href="coverage.html">Coverage Areas</a>
+                    <a href="emergency.html">Emergency Care</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contact</h4>
+                    <p>24/7 Equine & Livestock Emergency</p>
+                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 FarmVet Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const parent = item.parentElement;
+                const wasActive = parent.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-question span').textContent = '+';
+                });
+                
+                // Open clicked if it wasn't already open
+                if (!wasActive) {
+                    parent.classList.add('active');
+                    item.querySelector('span').textContent = '-';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Care | FarmVet Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .emergency-banner {
+            background-color: #D32F2F;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .emergency-steps {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        .step-list {
+            counter-reset: emergency-counter;
+            padding-left: 0;
+        }
+        .step-list li {
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+        .step-list li::before {
+            counter-increment: emergency-counter;
+            content: counter(emergency-counter);
+            position: absolute;
+            left: 0;
+            top: -5px;
+            width: 40px;
+            height: 40px;
+            background-color: #D32F2F;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* 1. Triage Symptom Checker Styles */
+        .triage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .triage-col {
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        .triage-col.red {
+            border-top: 6px solid #D32F2F;
+        }
+        .triage-col.green {
+            border-top: 6px solid var(--accent);
+        }
+        .triage-header-block {
+            padding: 2rem;
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            text-align: center;
+        }
+        .triage-header-block.red {
+            background: rgba(211, 47, 47, 0.05);
+            color: #D32F2F;
+            border-bottom: 1px solid rgba(211, 47, 47, 0.1);
+        }
+        .triage-header-block.green {
+            background: rgba(44, 122, 93, 0.05);
+            color: var(--primary);
+            border-bottom: 1px solid rgba(44, 122, 93, 0.1);
+        }
+        .triage-header-block h3 {
+            color: inherit;
+            margin-bottom: 0;
+            font-size: 1.4rem;
+        }
+        .triage-list {
+            padding: 2rem;
+        }
+        .triage-item {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+        .triage-item:last-child {
+            margin-bottom: 0;
+        }
+        .triage-item span.indicator {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+        .triage-item strong {
+            color: var(--secondary);
+            display: block;
+        }
+        .triage-item p {
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* 3. First Aid Kit Checklist Styles */
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        .kit-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .kit-card h4 {
+            font-size: 1.15rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .kit-item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .kit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        .kit-item span.bullet {
+            color: var(--highlight);
+            font-weight: bold;
+        }
+
+        /* 5. Emergency FAQs Accordion Styles */
+        .faq-max-width {
+            max-width: 800px;
+            margin: 3.5rem auto 0;
+        }
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            border-color: #D32F2F;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+        .faq-item details {
+            width: 100%;
+        }
+        .faq-item summary {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            list-style: none;
+            outline: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-icon-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            color: #D32F2F;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-item details[open] summary .faq-icon-arrow {
+            transform: rotate(45deg);
+            background: #D32F2F;
+            color: var(--white);
+        }
+        .faq-content {
+            padding: 0 2rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .faq-content p {
+            margin-bottom: 0;
+            padding-top: 1rem;
+        }
+
+        /* 4. Prep Policies Layout */
+        .prep-split {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .prep-list-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .prep-item-box {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+            border-left: 4px solid var(--primary);
+        }
+        .prep-item-box h4 {
+            margin-bottom: 0.3rem;
+            color: var(--secondary);
+        }
+        .prep-item-box p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 992px) {
+            .triage-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .prep-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="emergency-banner">
+        🚨 24/7 EMERGENCY LINE: 1-800-VET-FARM (1-800-838-3276)
+    </div>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                🐴 <span>FarmVet</span> Care
+            </a>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home2.html">Home 2</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="emergency.html" class="active">Emergency</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-header" style="background-image: linear-gradient(rgba(27, 42, 71, 0.9), rgba(27, 42, 71, 0.9)), url('images/emergency.png'); padding: 10rem 0 8rem;">
+        <div class="container fade-in">
+            <h1>24/7 Emergency Veterinary Care</h1>
+            <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">Rapid response for critical situations. Our mobile units are fully equipped for urgent equine and livestock care.</p>
+        </div>
+    </div>
+
+    <section class="container fade-in">
+        <div class="emergency-steps">
+            <h2 style="color: #D32F2F; text-align: center; margin-bottom: 2rem;">Emergency Call Procedures</h2>
+            <ol class="step-list">
+                <li>
+                    <h4>Call the Emergency Line Immediately</h4>
+                    <p>Dial 1-800-VET-FARM. If after hours, our answering service will immediately page the on-call veterinarian who will call you back within 15 minutes.</p>
+                </li>
+                <li>
+                    <h4>Assess & Report the Situation</h4>
+                    <p>Provide the dispatcher or veterinarian with the exact location (stable address or farm name), animal type, and primary symptoms (e.g., colic signs, severe laceration, dystocia).</p>
+                </li>
+                <li>
+                    <h4>Follow Vet Instructions</h4>
+                    <p>Keep the animal as calm and safe as possible. Do not administer any medications (like Banamine) unless specifically instructed by the veterinarian over the phone, as this can mask critical diagnostic symptoms.</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Common Emergencies We Treat</h2>
+        </div>
+        <div class="grid">
+            <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/equine_care.png" alt="Urgent Equine Care" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Urgent Equine Care & Colic</h3>
+                <p>Colic requires immediate attention. We provide on-site medical management of colic, including physical exams, rectal palpation, nasogastric intubation, and IV fluid therapy. We also handle acute laminitis, choke, and tying up.</p>
+            </div>
+            <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/emergency.png" alt="Stable Emergencies" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Stable Emergencies & Trauma</h3>
+                <p>Rapid response for severe lacerations, puncture wounds, eye injuries, and acute severe lameness (suspected fractures or infections). Our trucks are equipped with portable digital radiography and ultrasound.</p>
+            </div>
+            <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
+                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                    <img src="images/reproductive_services.png" alt="Livestock Dystocia" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h3>Livestock Dystocia</h3>
+                <p>Emergency assistance for difficult births (calving, foaling, lambing, kidding). Immediate intervention is critical for the survival of both the mother and the neonate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 1: TRIAGE SYMPTOM CHECKER
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Is It an Emergency? Triage Checker</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Determine whether your animal requires immediate after-hours paging or can be scheduled during normal business routes.</p>
+        </div>
+        
+        <div class="triage-grid">
+            <!-- Call Immediately -->
+            <div class="triage-col red fade-in">
+                <div class="triage-header-block red">
+                    <h3>🚨 Call Immediately (24/7)</h3>
+                </div>
+                <div class="triage-list">
+                    <div class="triage-item">
+                        <span class="triage-icon-red" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(211, 47, 47, 0.1); color: #D32F2F; flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </span>
+                        <div>
+                            <strong>Severe / Progressive Colic</strong>
+                            <p>Violent rolling, sweating, biting at flanks, inability to stand, or elevated heart rates.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-red" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(211, 47, 47, 0.1); color: #D32F2F; flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </span>
+                        <div>
+                            <strong>Severe Trauma or Fractures</strong>
+                            <p>Non-weight-bearing lameness, exposed bone, deep arterial bleeding, or lacerations.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-red" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(211, 47, 47, 0.1); color: #D32F2F; flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </span>
+                        <div>
+                            <strong>Dystocia (Foaling / Calving Difficulties)</strong>
+                            <p>No progress within 20 minutes of active straining, abnormal presentation of legs/nose.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-red" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(211, 47, 47, 0.1); color: #D32F2F; flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                        </span>
+                        <div>
+                            <strong>Acute Ocular (Eye) Injury</strong>
+                            <p>Squinting, swelling, cloudiness, pupil dilation, or active puncture of the eye structure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Schedule Routine -->
+            <div class="triage-col green fade-in" style="transition-delay: 0.1s;">
+                <div class="triage-header-block green">
+                    <h3>🟢 Schedule Routine Call (Weekday)</h3>
+                </div>
+                <div class="triage-list">
+                    <div class="triage-item">
+                        <span class="triage-icon-green" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        <div>
+                            <strong>Mild Hives or Skin Swelling</strong>
+                            <p>Itchy bumps, stable breathing, normal appetite, and normal rectal temperature.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-green" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        <div>
+                            <strong>Minor Scraping / Abrasions</strong>
+                            <p>Surface cuts that do not expose muscle/bone, minimal bleeding, and normal movement.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-green" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        <div>
+                            <strong>Chronic Mild Lameness</strong>
+                            <p>Slight head-bobbing at trot, no swelling/heat in limbs, and sound at the walk.</p>
+                        </div>
+                    </div>
+                    <div class="triage-item">
+                        <span class="triage-icon-green" style="display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(44, 122, 93, 0.1); color: var(--accent); flex-shrink: 0; margin-top: 2px;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                        <div>
+                            <strong>Lost Shoe / Minor Hoof Issues</strong>
+                            <p>Unless accompanied by acute heat, pulsing, or absolute refusal to bear weight.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 2: ARRIVAL PREPARATION GUIDE
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container prep-split">
+            <div class="fade-in">
+                <h2 style="color: #D32F2F;">Preparing for the Vet's Arrival</h2>
+                <p>During an emergency, every second counts. Taking these pre-arrival preparation steps makes treatment much safer and faster for our veterinary team.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="contact.html" class="btn btn-danger" style="background-color: #D32F2F;">Contact Dispatch</a>
+                </div>
+            </div>
+            
+            <div class="prep-list-items fade-in" style="transition-delay: 0.2s;">
+                <!-- Step 1 -->
+                <div class="prep-item-box" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0; padding: 10px; margin-top: 4px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.3rem; color: var(--secondary);">Halter and Confine</h4>
+                        <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--text-muted);">Put a halter and lead rope on the animal. Secure them in a dry, clean box stall, dry pen, or squeeze chute. Avoid letting colicky horses roll violently.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="prep-item-box" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0; padding: 10px; margin-top: 4px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6v2H9v-2zm3-16a7 7 0 0 0-7 7c0 2.2 1.3 4.1 3.2 5.1-.3.7-.5 1.5-.5 2.3v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1c0-.8-.2-1.6-.5-2.3 1.9-1 3.2-2.9 3.2-5.1a7 7 0 0 0-7-7z"></path></svg>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.3rem; color: var(--secondary);">Secure Light & Shelter</h4>
+                        <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--text-muted);">If the emergency occurs at night, ensure a clean, covered workspace is available with bright lighting and access to fresh warm water.</p>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="prep-item-box" style="display: flex; gap: 1.5rem; align-items: flex-start;">
+                    <div style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0; padding: 10px; margin-top: 4px;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 0.3rem; color: var(--secondary);">Clear Ambulation Pathways</h4>
+                        <p style="margin-bottom: 0; font-size: 0.9rem; color: var(--text-muted);">Open gates, move farm machinery, and clear driveways so the vet's mobile truck can park directly next to the barn door.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 3: RECOMMENDED FIRST AID KIT
+         ========================================== -->
+    <section class="section container">
+        <div class="split-section" style="align-items: center; gap: 4rem;">
+            <!-- Left Side: Relevant Photograph -->
+            <div class="split-image fade-in" style="flex: 0.95; border-radius: 16px; overflow: hidden; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06); border: 1px solid rgba(0,0,0,0.05);">
+                <img src="images/preventive_programs.png" alt="Barn First Aid Kit Supplies" style="width: 100%; height: auto; display: block; object-fit: cover;">
+            </div>
+            
+            <!-- Right Side: Structured Checklists -->
+            <div class="split-content fade-in" style="flex: 1.05;">
+                <h2 style="color: #D32F2F; margin-bottom: 0.5rem;">Recommended Barn First Aid Kit</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Every barn or stable manager should keep these medical supplies stocked and readily accessible in case of emergency.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <!-- Column 1 -->
+                    <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                            </span>
+                            <span>Bandaging Supplies</span>
+                        </h4>
+                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Non-stick gauze pads</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Elastic bandages (Vetrap)</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Cotton roll padding</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Medical & duct tape</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2 -->
+                    <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                            </span>
+                            <span>Instruments & Tools</span>
+                        </h4>
+                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Veterinary thermometer</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Bandage shears (heavy)</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Clean medical bucket</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Flashlight/headlamp</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 3 -->
+                    <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                            <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"></path></svg>
+                            </span>
+                            <span>Antiseptics & Cleansers</span>
+                        </h4>
+                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Chlorhexidine scrub</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Sterile saline flush</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Antiseptic ointment</div>
+                            <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Latex/nitrile gloves</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 4: EMERGENCY FEES & POLICIES
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="split-section" style="align-items: center; gap: 4rem;">
+                <div class="split-content fade-in">
+                    <h2>Emergency Fees & Call-Out Policies</h2>
+                    <p>Emergency medical care requires rapid redeployment of clinical rigs, specialized anesthetics, and after-hours staffing. To maintain service continuity, we enforce clear fee structures:</p>
+                    <ul style="margin-bottom: 2rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Priority Dispatch:</strong> Established clients receive priority paging and lower emergency call rates.
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Dispatch Fees:</strong> Call-out rates are tiered based on mileage. After-hours premiums apply to visits between 6:00 PM and 8:00 AM.
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Payment Terms:</strong> Payment is due at the time of emergency treatment via credit card, check, or cash.
+                        </li>
+                    </ul>
+                </div>
+                <div class="split-image fade-in" style="box-shadow: none; transition-delay: 0.2s;">
+                    <div style="background: var(--navy); color: var(--white); padding: 3rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(27, 42, 71, 0.1);">
+                        <h4 style="color: var(--highlight); font-size: 1rem; text-transform: uppercase; margin-bottom: 0.5rem;">After-Hours Dispatch Line</h4>
+                        <h2 style="color: var(--white); font-size: 2.2rem; margin-bottom: 1.5rem;">1-800-VET-FARM</h2>
+                        <p style="font-size: 0.9rem; color: #B0BEC5; margin-bottom: 0;">Paging service averages a 15-minute veterinarian callback response time for critical equine & herd calls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTENT 5: EMERGENCY FAQS ACCORDION
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Emergency Care FAQs</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Answers to common logistical questions regarding clinical emergencies and on-farm surgical setups.</p>
+        </div>
+        
+        <div class="faq-max-width fade-in">
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>How quickly will the veterinarian arrive at my property?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>Our average emergency dispatch travel time is under 45 minutes, depending on your farm location and current route status. The paging doctor will give you an exact estimated arrival time (ETA) when calling you back.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>Should I administer pain medication (like Banamine) before the vet arrives?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p><strong>No.</strong> Please do not give any NSAIDs, pain killers, or sedatives unless explicitly directed by the on-call veterinarian. Administering drugs beforehand can mask symptoms, alter vital signs, and complicate colic or lameness diagnoses.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>What happens if my horse needs surgical hospitalization?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>For critical cases that require intensive inpatient surgical intervention (such as surgical colic or fracture repair), our veterinarians will stabilize the animal on-site, administer initial support therapies, and coordinate immediate referral and records transfer to the nearest regional veterinary hospital.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FarmVet Care</h4>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">Services</a>
+                    <a href="coverage.html">Coverage Areas</a>
+                    <a href="emergency.html">Emergency Care</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contact</h4>
+                    <p>24/7 Equine & Livestock Emergency</p>
+                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 FarmVet Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

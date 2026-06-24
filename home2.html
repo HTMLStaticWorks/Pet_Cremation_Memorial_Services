@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing & Lead Gen | FarmVet Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .hero-marketing {
+            height: 100vh;
+            background: linear-gradient(rgba(27, 42, 71, 0.8), rgba(27, 42, 71, 0.8)), url('images/hero.png') center/cover fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+        .hero-marketing .hero-content {
+            text-align: left;
+            margin: 0;
+        }
+        .hero-marketing h1 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .hero-marketing p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .form-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 450px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+        .marketing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 992px) {
+            .marketing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 1. How It Works Timeline Styles */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+            position: relative;
+        }
+        .timeline-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+            z-index: 1;
+        }
+        .timeline-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+        .timeline-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: rgba(229, 169, 60, 0.15);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+            transition: var(--transition);
+        }
+        .timeline-card:hover .timeline-number {
+            color: rgba(229, 169, 60, 0.3);
+            transform: scale(1.1);
+        }
+        .timeline-card h3 {
+            margin-top: 1rem;
+            font-size: 1.25rem;
+            color: var(--secondary);
+        }
+        .timeline-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        /* 2. Mobile Capabilities Spotlight Styles */
+        .capabilities-split {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .capabilities-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .capability-item {
+            background: var(--white);
+            padding: 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.02);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        .capability-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+        }
+        .capability-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .capability-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: #EAEAEA;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        .capability-stats {
+            background: var(--navy);
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(27, 42, 71, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        .capability-stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(229, 169, 60, 0.1);
+        }
+        .capability-stats h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        .stat-box {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 0;
+        }
+        .stat-box:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--highlight);
+            line-height: 1.1;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #B0BEC5;
+            margin-top: 0.2rem;
+        }
+
+        /* 3. Meet Our Specialists Styles */
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 3rem;
+            margin-top: 3.5rem;
+        }
+        .specialist-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        .specialist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+        }
+        .specialist-img-container {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            position: relative;
+        }
+        .specialist-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .specialist-card:hover .specialist-img {
+            transform: scale(1.05);
+        }
+        .specialist-badge {
+            position: absolute;
+            bottom: 1rem;
+            left: 1.5rem;
+            background: var(--highlight);
+            color: var(--navy);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 10px rgba(229, 169, 60, 0.3);
+        }
+        .specialist-info {
+            padding: 2rem;
+        }
+        .specialist-info h3 {
+            margin-bottom: 0.2rem;
+            font-size: 1.5rem;
+        }
+        .specialist-title {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+        .specialist-info p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* 4. Interactive Accordion FAQ Styles */
+        .faq-max-width {
+            max-width: 800px;
+            margin: 3.5rem auto 0;
+        }
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+        .faq-item details {
+            width: 100%;
+        }
+        .faq-item summary {
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            list-style: none;
+            outline: none;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .faq-icon-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light-gray);
+            color: var(--primary);
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+        .faq-item details[open] summary .faq-icon-arrow {
+            transform: rotate(45deg);
+            background: var(--primary);
+            color: var(--white);
+        }
+        .faq-content {
+            padding: 0 2rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+        .faq-content p {
+            margin-bottom: 0;
+            padding-top: 1rem;
+        }
+
+        /* 5. Educational Insights & News Styles */
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .insight-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .insight-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent);
+        }
+        .insight-meta {
+            padding: 2rem 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .insight-category {
+            background: rgba(44, 122, 93, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .insight-readtime {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .insight-body {
+            padding: 1rem 2rem 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .insight-body h3 {
+            font-size: 1.3rem;
+            line-height: 1.4;
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+        .insight-card:hover .insight-body h3 {
+            color: var(--primary);
+        }
+        .insight-body p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+        .insight-link {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+        }
+        .insight-link span {
+            transition: transform 0.3s ease;
+        }
+        .insight-card:hover .insight-link span {
+            transform: translateX(4px);
+        }
+
+        /* Adjustments for Split/Responsive Columns */
+        @media (max-width: 992px) {
+            .capabilities-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+        @media (max-width: 600px) {
+            .capabilities-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 6. Client Testimonials Styles */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+        .testimonial-card {
+            background: var(--white);
+            padding: 3rem 2rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            transition: var(--transition);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border-color: var(--accent);
+        }
+        .testimonial-stars {
+            color: var(--highlight);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial-quote {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .testimonial-client {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding-top: 1.2rem;
+        }
+        .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .client-meta h4 {
+            font-size: 1rem;
+            margin-bottom: 0.1rem;
+        }
+        .client-meta span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* 7. Weekly Route & Zone Calendar Styles */
+        .route-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+        .route-day-card {
+            background: var(--white);
+            border-radius: 16px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.01);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+        .route-day-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+        }
+        .route-day-header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+        }
+        .route-day-badge {
+            background: var(--highlight);
+            color: var(--navy);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .route-day-header h3 {
+            color: var(--white);
+            margin: 0;
+            font-size: 1.4rem;
+        }
+        .route-day-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .route-info-list {
+            margin-bottom: 2rem;
+        }
+        .route-info-item {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+        .route-info-item span.emoji {
+            font-size: 1.2rem;
+        }
+        .route-info-item strong {
+            color: var(--secondary);
+            display: block;
+        }
+        .route-info-item p {
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                🐴 <span>FarmVet</span> Care
+            </a>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="home2.html" class="active">Home 2</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="coverage.html">Coverage</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li style="margin-left: 1rem;"><a href="contact.html" class="btn btn-primary" style="color: white;">Request Visit</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero-marketing">
+        <div class="container marketing-grid">
+            <div class="hero-content fade-in">
+                <h1 style="font-size: 3rem;">Expert Veterinary Care at Your Farm</h1>
+                <p>Preventive care, emergency response, and herd health management. We bring the clinic to you.</p>
+                <div style="margin-top: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; justify-content: flex-start; color: white;">
+                        <div style="background: var(--highlight); color: var(--navy); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</div>
+                        <h4 style="margin: 0; color: white;">Mobile Diagnostics</h4>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; justify-content: flex-start; color: white;">
+                        <div style="background: var(--highlight); color: var(--navy); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-weight: bold;">✓</div>
+                        <h4 style="margin: 0; color: white;">24/7 Emergency Care</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-card fade-in" style="transition-delay: 0.3s;">
+                <h3 style="color: var(--navy); margin-bottom: 0.5rem;">Request an Appointment</h3>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Fill out the form below and we'll get back to you shortly.</p>
+                <form onsubmit="event.preventDefault(); alert('Form submitted successfully!');">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="(555) 123-4567" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Animal Type</label>
+                        <select class="form-control">
+                            <option>Equine (Horses)</option>
+                            <option>Bovine (Cattle)</option>
+                            <option>Small Ruminants (Sheep/Goats)</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Horse & Livestock Health Benefits</h2>
+            <p>Our comprehensive preventive care programs are designed to keep your animals healthy year-round.</p>
+        </div>
+        <div class="grid">
+            <div class="card fade-in" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 220px; width: 100%; overflow: hidden;">
+                    <img src="images/preventive_programs.png" alt="Preventive Programs" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 2.2rem 2rem 2rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.8rem; color: var(--secondary);">Preventive Programs</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">Customized vaccination schedules, deworming protocols, and routine wellness checkups tailored to your specific farm location and animal needs.</p>
+                </div>
+            </div>
+            <div class="card fade-in" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 220px; width: 100%; overflow: hidden;">
+                    <img src="images/nutritional_consulting.png" alt="Nutritional Consulting" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 2.2rem 2rem 2rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.8rem; color: var(--secondary);">Nutritional Consulting</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">Expert advice on pasture management, supplemental feeding, and specialized diets for peak performance and health.</p>
+                </div>
+            </div>
+            <div class="card fade-in" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; border-bottom: 4px solid transparent;">
+                <div style="height: 220px; width: 100%; overflow: hidden;">
+                    <img src="images/reproductive_services.png" alt="Reproductive Services" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div style="padding: 2.2rem 2rem 2rem; flex-grow: 1;">
+                    <h3 style="margin-bottom: 0.8rem; color: var(--secondary);">Reproductive Services</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0; line-height: 1.6;">Comprehensive breeding soundness exams, artificial insemination, and ultrasound pregnancy detection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 1: HOW WE WORK (TIMELINE)
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2 style="color: var(--navy);">How We Work: Your Farm Visit</h2>
+                <p style="max-width: 600px; margin: 0 auto;">A seamless, professional care experience delivered straight to your stable or pasture.</p>
+            </div>
+            
+            <div class="timeline-grid">
+                <div class="timeline-card fade-in">
+                    <span class="timeline-number">01</span>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
+                        <img src="images/booking_icon.png" alt="Booking" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Easy Booking</h3>
+                    <p>Request a visit online or call our dedicated line to outline your animal's wellness or diagnostic needs.</p>
+                </div>
+                
+                <div class="timeline-card fade-in" style="transition-delay: 0.1s;">
+                    <span class="timeline-number">02</span>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
+                        <img src="images/dispatch_icon.png" alt="Dispatch" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Custom Dispatch</h3>
+                    <p>Our vet units are stocked with specialized diagnostic and medical gear customized for your horse or herd.</p>
+                </div>
+                
+                <div class="timeline-card fade-in" style="transition-delay: 0.2s;">
+                    <span class="timeline-number">03</span>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
+                        <img src="images/treatment_icon.png" alt="Treatment" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>On-Site Treatment</h3>
+                    <p>Dr. Cole or Dr. Vance conducts thorough exams, diagnostics, or treatments directly on your property.</p>
+                </div>
+                
+                <div class="timeline-card fade-in" style="transition-delay: 0.3s;">
+                    <span class="timeline-number">04</span>
+                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
+                        <img src="images/records_icon.png" alt="Records" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Digital Records</h3>
+                    <p>Receive immediate electronic visit reports, medication directions, and a clear follow-up plan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: MOBILE CAPABILITIES (SPOTLIGHT)
+         ========================================== -->
+    <section class="section container">
+        <div class="capabilities-split">
+            <div class="fade-in">
+                <h2>Hospital-Grade Mobile Diagnostics</h2>
+                <p>We believe that high-quality care shouldn't require transporting stressed or injured animals. Our custom ambulatory rigs are loaded with advanced clinical technologies.</p>
+                
+                <div class="capabilities-list" style="margin-top: 2rem;">
+                    <div class="capability-item">
+                        <h4>⚡ Digital X-Ray</h4>
+                        <p>Instant bone & skeletal imaging on farm computer monitors.</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="capability-item">
+                        <h4>🔍 Ultrasound</h4>
+                        <p>High-resolution soft tissue diagnostics and reproduction scans.</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="capability-item">
+                        <h4>🔬 Blood Chemistry</h4>
+                        <p>On-site blood work analysis with rapid panel reports.</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="capability-item">
+                        <h4>🦷 Equine Dentistry</h4>
+                        <p>Advanced power floating tools and corrective oral surgery.</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill" style="width: 92%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="capability-stats fade-in" style="transition-delay: 0.2s;">
+                <h3>Ambulatory Metrics</h3>
+                
+                <div class="stat-box">
+                    <div class="stat-number">50 Mi</div>
+                    <div class="stat-label">Full Service Ambulance Radius</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">30 Mins</div>
+                    <div class="stat-label">Average Emergency Dispatch Time</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">On-Site Record Synchronization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: MEET OUR SPECIALISTS
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Our Large Animal Specialists</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Dedicated practitioners combining decades of clinical excellence with deep agricultural roots.</p>
+            </div>
+            
+            <div class="specialists-grid">
+                <!-- Dr. Cole -->
+                <div class="specialist-card fade-in">
+                    <div class="specialist-img-container">
+                        <img src="images/vet_cole.png" alt="Dr. Sarah Cole, DVM" class="specialist-img">
+                        <span class="specialist-badge">Equine Sports Med</span>
+                    </div>
+                    <div class="specialist-info">
+                        <h3>Dr. Sarah Cole, DVM</h3>
+                        <div class="specialist-title">Senior Equine Practitioner</div>
+                        <p>Dr. Cole holds over 12 years of specialized equine expertise, focusing on lameness diagnostics, joint therapies, and advanced reproductive services.</p>
+                        <a href="about.html" class="btn btn-secondary" style="width: 100%;">Read Bio & Credentials</a>
+                    </div>
+                </div>
+                
+                <!-- Dr. Vance -->
+                <div class="specialist-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="specialist-img-container">
+                        <img src="images/vet_vance.png" alt="Dr. Marcus Vance, DVM, MS" class="specialist-img">
+                        <span class="specialist-badge">Herd Health & Bovine</span>
+                    </div>
+                    <div class="specialist-info">
+                        <h3>Dr. Marcus Vance, DVM, MS</h3>
+                        <div class="specialist-title">Livestock Medicine Director</div>
+                        <p>Dr. Vance specializes in bovine herd health, dairy production economics, and epidemiology, working with beef and dairy producers across the region.</p>
+                        <a href="about.html" class="btn btn-secondary" style="width: 100%;">Read Bio & Credentials</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 4: FAQS ACCORDION
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>Frequently Asked Questions</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Answers to common questions regarding mobile visits, scheduling, and emergency dispatch.</p>
+        </div>
+        
+        <div class="faq-max-width fade-in">
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>What geographic regions do you service?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>We service farms, stables, and agricultural facilities within a 50-mile radius of our main clinic base. If you have a larger herd that requires routine checkups or special consultations outside this zone, please call us to discuss custom arrangements.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>How should I prepare my animals and farm for a visit?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>To ensure a safe and efficient visit, please have your animals halter-broken (for horses/ruminants) and confined in a secure stall, dry pen, or squeeze chute before our arrival. Access to a clean, covered workspace, fresh water, and a standard electrical outlet is highly appreciated.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>Do you offer 24/7 emergency response for new clients?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>While our round-the-clock emergency team prioritizes existing clients to maintain scheduling continuity, we do extend emergency dispatch to non-established clients when our duty mobile units have open capacity. Emergency dispatch fees apply.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>
+                        <span>What payment types do you accept?</span>
+                        <div class="faq-icon-arrow">+</div>
+                    </summary>
+                    <div class="faq-content">
+                        <p>Payment is due at the time of clinical service. We accept cash, personal/farm checks, and all major credit cards. For commercial livestock accounts or structured seasonal breeding work, custom invoicing contracts can be established upon credit review.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 5: EDUCATIONAL INSIGHTS
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Latest Insights from the Field</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Expert guides and clinical articles written by our veterinarians to support your farm management.</p>
+            </div>
+            
+            <div class="insights-grid">
+                <!-- Card 1 -->
+                <div class="insight-card fade-in">
+                    <div class="insight-meta">
+                        <span class="insight-category">Equine Care</span>
+                        <span class="insight-readtime">5 min read</span>
+                    </div>
+                    <div class="insight-body">
+                        <h3>Spring Deworming Protocols for Performance Horses</h3>
+                        <p>A strategic guide on fecal egg counts, targeted anthelmintic selection, and pasture cleanups to combat resistance in active show stables.</p>
+                        <a href="resources.html" class="insight-link">Read Full Guide <span>&rarr;</span></a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="insight-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="insight-meta">
+                        <span class="insight-category">Bovine Health</span>
+                        <span class="insight-readtime">7 min read</span>
+                    </div>
+                    <div class="insight-body">
+                        <h3>Preventing Heat Stress in Dairy & Beef Cattle</h3>
+                        <p>Actionable herd management tips covering shade systems, sprinkler optimization, hydration strategies, and dietary adjustments during summer.</p>
+                        <a href="resources.html" class="insight-link">Read Full Guide <span>&rarr;</span></a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="insight-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="insight-meta">
+                        <span class="insight-category">Small Ruminants</span>
+                        <span class="insight-readtime">4 min read</span>
+                    </div>
+                    <div class="insight-body">
+                        <h3>Essential Vaccination Schedules for Sheep & Goats</h3>
+                        <p>Protect your flock against Enterotoxemia, Tetanus, and other highly infectious ruminant diseases with a veterinary-approved vaccine program.</p>
+                        <a href="resources.html" class="insight-link">Read Full Guide <span>&rarr;</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 6: CLIENT TESTIMONIALS
+         ========================================== -->
+    <section class="section container">
+        <div class="text-center fade-in">
+            <h2>What Farm & Stable Owners Say</h2>
+            <p style="max-width: 600px; margin: 0 auto;">Hear from the breeders, managers, and livestock producers who rely on our round-the-clock mobile clinic.</p>
+        </div>
+        
+        <div class="testimonials-grid">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"Dr. Cole's lameness diagnosis and joint therapy program got our top show jumper back in the ring weeks ahead of schedule. Her equine expertise is exceptional."</p>
+                <div class="testimonial-client">
+                    <div class="client-avatar" style="padding: 0; background: none;">
+                        <img src="images/client_jennifer.png" alt="Jennifer K." style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                    </div>
+                    <div class="client-meta">
+                        <h4>Jennifer K.</h4>
+                        <span>Windwood Equestrian Center</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card fade-in" style="transition-delay: 0.1s;">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"Our dairy cooperative has trusted Dr. Vance with herd health audits and calving issues for years. His nutritional strategies boosted milk yields and fertility."</p>
+                <div class="testimonial-client">
+                    <div class="client-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                            <circle cx="24" cy="24" r="24" fill="url(#thomasGrad)"/>
+                            <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
+                            <defs>
+                                <linearGradient id="thomasGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#1B4938"/>
+                                    <stop offset="1" stop-color="#E5A93C"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="client-meta">
+                        <h4>Thomas H.</h4>
+                        <span>Oak Ridge Cattle Ranch</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card fade-in" style="transition-delay: 0.2s;">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-quote">"When our horse started showing colic symptoms in the middle of the night, their mobile unit was on our property within 30 minutes. Absolutely saved his life."</p>
+                <div class="testimonial-client">
+                    <div class="client-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
+                            <circle cx="24" cy="24" r="24" fill="url(#liamGrad)"/>
+                            <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
+                            <defs>
+                                <linearGradient id="liamGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#2C7A5D"/>
+                                    <stop offset="1" stop-color="#1B2A47"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="client-meta">
+                        <h4>Liam P.</h4>
+                        <span>Hobby Farm Owner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 7: WEEKLY ROUTE & ZONE CALENDAR
+         ========================================== -->
+    <section class="section" style="background-color: var(--white); border-top: 1px solid #eaeaea;">
+        <div class="container">
+            <div class="text-center fade-in">
+                <h2>Weekly Mobile Route Calendar</h2>
+                <p style="max-width: 600px; margin: 0 auto;">Book routine checkups or vaccinations during your zone's scheduled days to waive custom dispatch fees.</p>
+            </div>
+            
+            <div class="route-calendar-grid">
+                <!-- Mon / Wed -->
+                <div class="route-day-card fade-in">
+                    <div class="route-day-header">
+                        <span class="route-day-badge">Mon & Wed</span>
+                        <h3>Northern Route</h3>
+                    </div>
+                    <div class="route-day-body">
+                        <div class="route-info-list">
+                            <div class="route-info-item">
+                                <span class="emoji">📍</span>
+                                <div>
+                                    <strong>Primary Coverage Areas</strong>
+                                    <p>Milford, Clarkston, Oakland Hills, and Northern agricultural corridors.</p>
+                                </div>
+                            </div>
+                            <div class="route-info-item">
+                                <span class="emoji">🐎</span>
+                                <div>
+                                    <strong>Specialty Focus</strong>
+                                    <p>Equine sports medicine, dental floats, and scheduled breeding audits.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Request Route Spot</a>
+                    </div>
+                </div>
+                
+                <!-- Tue / Thu -->
+                <div class="route-day-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="route-day-header">
+                        <span class="route-day-badge">Tue & Thu</span>
+                        <h3>Southern Valley</h3>
+                    </div>
+                    <div class="route-day-body">
+                        <div class="route-info-list">
+                            <div class="route-info-item">
+                                <span class="emoji">📍</span>
+                                <div>
+                                    <strong>Primary Coverage Areas</strong>
+                                    <p>Greenwood, Southern Valley plains, and surrounding livestock cooperatives.</p>
+                                </div>
+                            </div>
+                            <div class="route-info-item">
+                                <span class="emoji">🐄</span>
+                                <div>
+                                    <strong>Specialty Focus</strong>
+                                    <p>Herd health checks, bovine reproduction, and sheep/goat vaccinations.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Request Route Spot</a>
+                    </div>
+                </div>
+                
+                <!-- Friday -->
+                <div class="route-day-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="route-day-header" style="background: var(--primary);">
+                        <span class="route-day-badge" style="background: var(--white); color: var(--primary);">Friday</span>
+                        <h3>Local Zone Care</h3>
+                    </div>
+                    <div class="route-day-body">
+                        <div class="route-info-list">
+                            <div class="route-info-item">
+                                <span class="emoji">📍</span>
+                                <div>
+                                    <strong>Primary Coverage Areas</strong>
+                                    <p>Immediate 15-mile base clinic zone (Milford proper and central valleys).</p>
+                                </div>
+                            </div>
+                            <div class="route-info-item">
+                                <span class="emoji">🩹</span>
+                                <div>
+                                    <strong>Specialty Focus</strong>
+                                    <p>Follow-up dressing changes, non-emergency diagnostics, and health certificates.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Request Route Spot</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>FarmVet Care</h4>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <a href="services.html">Services</a>
+                    <a href="coverage.html">Coverage Areas</a>
+                    <a href="emergency.html">Emergency Care</a>
+                    <a href="about.html">About Us</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Emergency Contact</h4>
+                    <p>24/7 Equine & Livestock Emergency</p>
+                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 FarmVet Care. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
