@@ -70,6 +70,9 @@
 [data-theme="dark"] .logo span {
   color: #A8C4B4;
 }
+[data-theme="dark"] .logo-img {
+  filter: brightness(1.6) saturate(1.2);
+}
 [data-theme="dark"] .nav-menu a {
   color: var(--text-main);
 }
@@ -95,6 +98,256 @@
 [data-theme="dark"] .page-header {
   background-color: #0D1610 !important;
 }
+
+/* ==========================================================================
+   DARK THEME TEXT CONTRAST & BUTTON CORRECTIONS (EXPLICIT WHITE TEXT OVERRIDES)
+   ========================================================================== */
+[data-theme="dark"] .hero,
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero p,
+[data-theme="dark"] .hero-marketing,
+[data-theme="dark"] .hero-marketing h1,
+[data-theme="dark"] .hero-marketing p,
+[data-theme="dark"] .page-header,
+[data-theme="dark"] .page-header h1,
+[data-theme="dark"] .page-header p,
+[data-theme="dark"] .cta-section,
+[data-theme="dark"] .cta-section h2,
+[data-theme="dark"] .cta-section p,
+[data-theme="dark"] .footer,
+[data-theme="dark"] .footer-col h4,
+[data-theme="dark"] .footer-col .logo,
+[data-theme="dark"] .footer-col .logo span,
+[data-theme="dark"] .capability-stats,
+[data-theme="dark"] .capability-stats h3,
+[data-theme="dark"] .capability-stats p,
+[data-theme="dark"] .triage-header-block,
+[data-theme="dark"] .triage-header-block h3,
+[data-theme="dark"] .triage-header-block p,
+[data-theme="dark"] .emergency-banner,
+[data-theme="dark"] .back-to-top,
+[data-theme="dark"] .social-icon-link,
+[data-theme="dark"] .faq-icon-arrow {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-primary:hover,
+[data-theme="dark"] .btn-danger,
+[data-theme="dark"] .btn-danger:hover,
+[data-theme="dark"] .theme-toggle:hover,
+[data-theme="dark"] .rtl-toggle:hover,
+[data-theme="dark"] .social-icon-link:hover,
+[data-theme="dark"] .footer-col a:hover {
+  color: #FFFFFF !important;
+}
+
+/* Call to Action Section Button styling (Light & Dark Themes) */
+.cta-section .btn-secondary {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  transition: var(--transition);
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: #FFFFFF !important;
+  color: var(--primary) !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="dark"] .route-day-badge {
+  background-color: var(--primary) !important;
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   INLINE & CLASS CONTRAST OVERRIDES FOR DARK MODE
+   ========================================================================== */
+
+/* 1. Inline var(--primary) text color overrides & structural fallbacks */
+[data-theme="dark"] a[style*="color: var(--primary)"],
+[data-theme="dark"] .card a {
+  color: #5CBA8A !important;
+}
+[data-theme="dark"] a[style*="color: var(--primary)"]:hover,
+[data-theme="dark"] .card a:hover {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] h1[style*="color: var(--primary)"],
+[data-theme="dark"] h2[style*="color: var(--primary)"],
+[data-theme="dark"] h3[style*="color: var(--primary)"],
+[data-theme="dark"] h4[style*="color: var(--primary)"],
+[data-theme="dark"] .card h2,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .timeline .content h3,
+[data-theme="dark"] .map-container h3,
+[data-theme="dark"] .contact-grid h2 {
+  color: var(--text-main) !important;
+}
+
+/* Statistics counters in card stats */
+[data-theme="dark"] .card h1 {
+  color: #5CBA8A !important;
+}
+
+[data-theme="dark"] span[style*="color: var(--primary)"] {
+  color: #5CBA8A !important;
+}
+
+/* 2. FAQ section in resources.html */
+[data-theme="dark"] .faq-item.active .faq-question {
+  color: #5CBA8A !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 3. Partner links in resources.html */
+[data-theme="dark"] .partner-btn {
+  color: #5CBA8A !important;
+}
+[data-theme="dark"] .partner-btn:hover {
+  color: #FFFFFF !important;
+}
+
+/* 4. Triage blocks in emergency.html (restore semantic colors with high contrast) */
+[data-theme="dark"] .triage-header-block.red,
+[data-theme="dark"] .triage-header-block.red h3,
+[data-theme="dark"] .triage-header-block.red p {
+  color: #FF8A80 !important;
+  background-color: rgba(211, 47, 47, 0.15) !important;
+}
+[data-theme="dark"] .triage-header-block.green,
+[data-theme="dark"] .triage-header-block.green h3,
+[data-theme="dark"] .triage-header-block.green p {
+  color: #5CBA8A !important;
+  background-color: rgba(92, 186, 138, 0.15) !important;
+}
+
+/* 5. Custom Button and inputs on pages */
+[data-theme="dark"] .pairing-btn {
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .contact-social-link {
+  background-color: rgba(92, 186, 138, 0.15) !important;
+  color: #5CBA8A !important;
+}
+[data-theme="dark"] .contact-social-link:hover {
+  background-color: #5CBA8A !important;
+  color: #0D1610 !important;
+}
+
+/* Generic secondary buttons in dark mode */
+[data-theme="dark"] .btn-secondary {
+  background-color: transparent !important;
+  color: #5CBA8A !important;
+  border-color: #5CBA8A !important;
+}
+[data-theme="dark"] .btn-secondary:hover {
+  background-color: #5CBA8A !important;
+  color: #0D1610 !important;
+  border-color: #5CBA8A !important;
+}
+
+/* Maintain white color for CTA buttons in dark mode */
+[data-theme="dark"] .cta-section .btn-secondary {
+  background-color: transparent !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+[data-theme="dark"] .cta-section .btn-secondary:hover {
+  background-color: #FFFFFF !important;
+  color: var(--primary) !important;
+  border-color: #FFFFFF !important;
+}
+
+
+/* Bullet points checkmark spans in dark mode */
+[data-theme="dark"] .split-content ul li span {
+  color: #5CBA8A !important;
+}
+
+/* Checkmarks with gold backgrounds in dark mode */
+[data-theme="dark"] div[style*="background: var(--highlight)"],
+[data-theme="dark"] div[style*="background:var(--highlight)"] {
+  color: #0D1610 !important;
+}
+
+/* Card icon SVGs styling in dark mode */
+[data-theme="dark"] .card-icon {
+  background-color: #5CBA8A !important;
+}
+[data-theme="dark"] .card-icon svg {
+  stroke: #0D1610 !important;
+}
+
+/* FAQ active arrows background and color in dark mode */
+[data-theme="dark"] .faq-item details[open] summary .faq-icon-arrow {
+  background-color: #5CBA8A !important;
+  color: #0D1610 !important;
+}
+
+/* Insight card hover titles and links in dark mode */
+[data-theme="dark"] .insight-card:hover .insight-body h3 {
+  color: #5CBA8A !important;
+}
+[data-theme="dark"] .insight-link {
+  color: #5CBA8A !important;
+}
+[data-theme="dark"] .insight-link:hover {
+  color: #FFFFFF !important;
+}
+
+/* Route day header for Friday in dark mode */
+[data-theme="dark"] .route-day-header[style*="background: var(--primary)"],
+[data-theme="dark"] .route-day-header[style*="background: var(--primary)"] h3,
+[data-theme="dark"] .route-day-header[style*="background:var(--primary)"],
+[data-theme="dark"] .route-day-header[style*="background:var(--primary)"] h3,
+[data-theme="dark"] .route-day-card:nth-of-type(3) .route-day-header,
+[data-theme="dark"] .route-day-card:nth-of-type(3) .route-day-header h3 {
+  color: #FFFFFF !important;
+}
+
+/* Capability statistics card in home2.html dark mode */
+[data-theme="dark"] .capability-stats {
+  background-color: var(--bg-card) !important;
+  color: var(--text-main) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4) !important;
+}
+[data-theme="dark"] .capability-stats h3 {
+  color: #FFFFFF !important;
+}
+[data-theme="dark"] .stat-label {
+  color: var(--text-muted) !important;
+}
+[data-theme="dark"] .stat-box {
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ============================
+   CONTACT PAGE SOCIAL LINK LIGHT MODE
+   ============================ */
+.contact-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(27, 73, 56, 0.08);
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.contact-social-link:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
 
 /* ============================
    THEME TOGGLE BUTTON
@@ -190,6 +443,14 @@
 [dir="rtl"] .nav-menu a::after {
   left: auto;
   right: 0;
+}
+[dir="rtl"] .nav-controls {
+  margin-left: 0;
+  margin-right: 1.2rem;
+}
+[dir="rtl"] .nav-menu li[style*="margin-left"] {
+  margin-left: 0 !important;
+  margin-right: 1rem !important;
 }
 [dir="rtl"] .hero-content {
   text-align: center;
@@ -320,13 +581,19 @@ ul {
   white-space: nowrap;
 }
 
+.logo-img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
+
 .logo span {
   color: var(--navy);
 }
 
 .nav-menu {
   display: flex;
-  gap: 0.6rem;
+  gap: 0.85rem;
   align-items: center;
 }
 
@@ -334,8 +601,13 @@ ul {
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  margin-left: 0.3rem;
+  gap: 0.5rem;
+  margin-left: 1.2rem;
+}
+
+.nav-menu .btn {
+  padding: 0.55rem 1.3rem;
+  font-size: 0.9rem;
 }
 
 .nav-menu a {
@@ -666,11 +938,19 @@ ul {
     flex-direction: column;
     gap: 2.5rem;
   }
+  .split-content, .split-image {
+    width: 100%;
+  }
   .split-content {
     text-align: center;
   }
+  .split-content ul {
+    display: table;
+    margin: 0 auto;
+    text-align: left;
+  }
   .split-content ul li {
-    justify-content: center;
+    justify-content: flex-start;
   }
   .split-content .btn {
     display: inline-block;
@@ -697,15 +977,39 @@ ul {
   }
 }
 
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .nav-menu {
-    gap: 0.8rem;
-  }
-  .nav-menu a {
-    font-size: 0.9rem;
+@media (min-width: 1025px) and (max-width: 1366px) {
+  .nav-container {
+    padding: 0 1rem;
   }
   .logo {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    gap: 0.4rem;
+  }
+  .logo-img {
+    height: 32px;
+  }
+  .nav-menu {
+    gap: 0.45rem;
+  }
+  .nav-menu a {
+    font-size: 0.82rem;
+  }
+  .nav-controls {
+    margin-left: 0.5rem;
+    gap: 0.3rem;
+  }
+  [dir="rtl"] .nav-controls {
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+  .theme-toggle, .rtl-toggle {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+  .nav-menu .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -794,9 +1098,110 @@ ul {
   }
 }
 
-/* Tablet: allow 3 equal-width columns (auto-fit with smaller min) */
+/* Tablet: 2 columns and center the odd last child */
 @media (min-width: 768px) and (max-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .grid > div:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 100%;
+    max-width: 450px;
   }
 }
+
+/* ============================
+   BACK TO TOP BUTTON
+   ============================ */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(27, 73, 56, 0.4);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background-color 0.3s, transform 0.3s;
+}
+
+.back-to-top:hover {
+  background-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Dark mode overrides for Back to Top */
+[data-theme="dark"] .back-to-top {
+  background-color: #5CBA8A;
+  color: #0D1610;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+  background-color: #A8C4B4;
+}
+
+/* RTL positioning */
+[dir="rtl"] .back-to-top {
+  right: auto;
+  left: 30px;
+}
+
+/* ============================
+   FOOTER SOCIAL ICONS & BRAND
+   ============================ */
+.social-icons {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.social-icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #B0BEC5;
+  transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+  background-color: var(--accent);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+/* Prevent padding-left shift on social links in footer */
+.footer-col .social-icons a:hover {
+  padding-left: 0 !important;
+}
+
+/* Footer Logo color overrides */
+.footer-col .logo {
+  color: var(--white);
+}
+
+.footer-col .logo span {
+  color: var(--white);
+}
+
+
