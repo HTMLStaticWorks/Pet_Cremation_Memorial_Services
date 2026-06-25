@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         .hero-marketing {
-            height: 100vh;
-            background: linear-gradient(rgba(27, 42, 71, 0.8), rgba(27, 42, 71, 0.8)), url('images/hero.png') center/cover fixed;
+            min-height: 100vh;
+            padding: 6rem 0;
+            background: linear-gradient(rgba(27, 42, 71, 0.8), rgba(27, 42, 71, 0.8)), url('images/hero_marketing.png') center/cover fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -58,6 +59,7 @@
         @media (max-width: 992px) {
             .marketing-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
 
@@ -71,18 +73,26 @@
         }
         .timeline-card {
             background: var(--white);
-            padding: 2.5rem 2rem;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
             border: 1px solid rgba(0, 0, 0, 0.05);
             position: relative;
             transition: var(--transition);
             z-index: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .timeline-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             border-color: var(--accent);
+        }
+        .timeline-card img {
+            transition: var(--transition);
+        }
+        .timeline-card:hover img {
+            transform: scale(1.05);
         }
         .timeline-number {
             font-family: 'Outfit', sans-serif;
@@ -94,15 +104,17 @@
             right: 1.5rem;
             line-height: 1;
             transition: var(--transition);
+            z-index: 2;
         }
         .timeline-card:hover .timeline-number {
             color: rgba(229, 169, 60, 0.3);
             transform: scale(1.1);
         }
         .timeline-card h3 {
-            margin-top: 1rem;
+            margin-top: 0;
             font-size: 1.25rem;
             color: var(--secondary);
+            margin-bottom: 0.5rem;
         }
         .timeline-card p {
             font-size: 0.95rem;
@@ -232,6 +244,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: top center;
             transition: transform 0.5s ease;
         }
         .specialist-card:hover .specialist-img {
@@ -418,6 +431,14 @@
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
+            .insights-grid > div:last-child:nth-child(odd),
+            .testimonials-grid > div:last-child:nth-child(odd),
+            .route-calendar-grid > div:last-child:nth-child(odd) {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: 100%;
+                max-width: 450px;
+            }
         }
         @media (max-width: 600px) {
             .capabilities-list {
@@ -567,7 +588,8 @@
     <header class="header">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                🐴 <span>FarmVet</span> Care
+                <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img">
+                <span>FarmVet</span> Care
             </a>
             <button class="hamburger">
                 <span class="bar"></span>
@@ -581,7 +603,7 @@
                 <li><a href="coverage.html">Coverage</a></li>
                 <li><a href="emergency.html">Emergency</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+
                 <li><a href="resources.html">Resources</a></li>
                 <li class="nav-controls">
                     <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark/light mode">
@@ -692,38 +714,46 @@
             <div class="timeline-grid">
                 <div class="timeline-card fade-in">
                     <span class="timeline-number">01</span>
-                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
-                        <img src="images/booking_icon.png" alt="Booking" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                        <img src="images/workflow_booking.png" alt="Easy Booking" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3>Easy Booking</h3>
-                    <p>Request a visit online or call our dedicated line to outline your animal's wellness or diagnostic needs.</p>
+                    <div style="padding: 1.8rem 1.5rem 1.8rem;">
+                        <h3>Easy Booking</h3>
+                        <p>Request a visit online or call our dedicated line to outline your animal's wellness or diagnostic needs.</p>
+                    </div>
                 </div>
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.1s;">
                     <span class="timeline-number">02</span>
-                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
-                        <img src="images/dispatch_icon.png" alt="Dispatch" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                        <img src="images/workflow_dispatch.png" alt="Custom Dispatch" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3>Custom Dispatch</h3>
-                    <p>Our vet units are stocked with specialized diagnostic and medical gear customized for your horse or herd.</p>
+                    <div style="padding: 1.8rem 1.5rem 1.8rem;">
+                        <h3>Custom Dispatch</h3>
+                        <p>Our vet units are stocked with specialized diagnostic and medical gear customized for your horse or herd.</p>
+                    </div>
                 </div>
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.2s;">
                     <span class="timeline-number">03</span>
-                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
-                        <img src="images/treatment_icon.png" alt="Treatment" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                        <img src="images/workflow_treatment.png" alt="On-Site Treatment" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3>On-Site Treatment</h3>
-                    <p>Dr. Cole or Dr. Vance conducts thorough exams, diagnostics, or treatments directly on your property.</p>
+                    <div style="padding: 1.8rem 1.5rem 1.8rem;">
+                        <h3>On-Site Treatment</h3>
+                        <p>Dr. Cole or Dr. Vance conducts thorough exams, diagnostics, or treatments directly on your property.</p>
+                    </div>
                 </div>
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.3s;">
                     <span class="timeline-number">04</span>
-                    <div style="width: 60px; height: 60px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; background: var(--primary); border: 2px solid rgba(229,169,60,0.4);">
-                        <img src="images/records_icon.png" alt="Records" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                        <img src="images/workflow_records.png" alt="Digital Records" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
-                    <h3>Digital Records</h3>
-                    <p>Receive immediate electronic visit reports, medication directions, and a clear follow-up plan.</p>
+                    <div style="padding: 1.8rem 1.5rem 1.8rem;">
+                        <h3>Digital Records</h3>
+                        <p>Receive immediate electronic visit reports, medication directions, and a clear follow-up plan.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -773,7 +803,7 @@
                 </div>
             </div>
             
-            <div class="capability-stats fade-in" style="transition-delay: 0.2s;">
+            <div class="capability-stats fade-in" style="transition-delay: 0.2s; text-align: center;">
                 <h3>Ambulatory Metrics</h3>
                 
                 <div class="stat-box">
@@ -979,17 +1009,8 @@
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-quote">"Our dairy cooperative has trusted Dr. Vance with herd health audits and calving issues for years. His nutritional strategies boosted milk yields and fertility."</p>
                 <div class="testimonial-client">
-                    <div class="client-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
-                            <circle cx="24" cy="24" r="24" fill="url(#thomasGrad)"/>
-                            <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
-                            <defs>
-                                <linearGradient id="thomasGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#1B4938"/>
-                                    <stop offset="1" stop-color="#E5A93C"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                    <div class="client-avatar" style="padding: 0; background: none;">
+                        <img src="images/client_thomas.png" alt="Thomas H." style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <div class="client-meta">
                         <h4>Thomas H.</h4>
@@ -1003,17 +1024,8 @@
                 <div class="testimonial-stars">★★★★★</div>
                 <p class="testimonial-quote">"When our horse started showing colic symptoms in the middle of the night, their mobile unit was on our property within 30 minutes. Absolutely saved his life."</p>
                 <div class="testimonial-client">
-                    <div class="client-avatar" style="padding: 0; background: none; border-radius: 50%; overflow: hidden;">
-                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block;">
-                            <circle cx="24" cy="24" r="24" fill="url(#liamGrad)"/>
-                            <path d="M24 12C20.13 12 17 15.13 17 19C17 22.87 20.13 26 24 26C27.87 26 31 22.87 31 19C31 15.13 27.87 12 24 12ZM24 29C17.33 29 4 32.33 4 39V42H44V39C44 32.33 30.67 29 24 29Z" fill="#FFFFFF" fill-opacity="0.9"/>
-                            <defs>
-                                <linearGradient id="liamGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#2C7A5D"/>
-                                    <stop offset="1" stop-color="#1B2A47"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
+                    <div class="client-avatar" style="padding: 0; background: none;">
+                        <img src="images/client_liam.png" alt="Liam P." style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <div class="client-meta">
                         <h4>Liam P.</h4>
@@ -1058,7 +1070,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Request Route Spot</a>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Request Route Spot</a>
                     </div>
                 </div>
                 
@@ -1085,7 +1097,7 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Request Route Spot</a>
+                        <a href="contact.html" class="btn btn-primary" style="width: 100%;">Request Route Spot</a>
                     </div>
                 </div>
                 
@@ -1123,20 +1135,46 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>FarmVet Care</h4>
-                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                    <div class="logo" style="margin-bottom: 1.2rem; color: var(--white); font-size: 1.4rem;">
+                        <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img" style="filter: brightness(2) saturate(1.2); height: 35px;">
+                        <span>FarmVet</span> Care
+                    </div>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock directly at your farm.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-link" aria-label="Facebook">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Instagram">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Twitter">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="YouTube">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
-                    <a href="services.html">Services</a>
+                    <a href="services.html">Our Services</a>
                     <a href="coverage.html">Coverage Areas</a>
                     <a href="emergency.html">Emergency Care</a>
-                    <a href="about.html">About Us</a>
+                    <a href="about.html">About Our Clinic</a>
+                    <a href="resources.html">Client Resources</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Emergency Contact</h4>
-                    <p>24/7 Equine & Livestock Emergency</p>
-                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                    <h4>Office Contact</h4>
+                    <p>📍 123 FarmVet Road, Suite A<br>Lexington, KY 40502</p>
+                    <p>📞 Office: (859) 555-0199</p>
+                    <p>✉️ info@farmvetcare.com</p>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #8898a0;">Mon - Fri: 8:00 AM - 5:00 PM<br>Sat: 8:00 AM - 12:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h4>24/7 Emergency Dispatch</h4>
+                    <p>For urgent equine or livestock medical care outside office hours, call our team immediately:</p>
+                    <h3 style="color: var(--highlight); font-size: 1.5rem; margin-top: 1rem; white-space: nowrap;">1-800-VET-FARM</h3>
+                    <p style="font-size: 0.85rem; color: #E5A93C; margin-top: 0.5rem; font-weight: 500;">⚠️ On-Call Veterinarian Available</p>
                 </div>
             </div>
             <div class="footer-bottom">

@@ -143,9 +143,10 @@
             gap: 10px;
         }
         .kit-item-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 0.8rem;
+            text-align: left;
         }
         .kit-item {
             display: flex;
@@ -255,6 +256,9 @@
         }
 
         @media (max-width: 992px) {
+            .kit-item-list {
+                grid-template-columns: 1fr;
+            }
             .triage-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -298,7 +302,8 @@
     <header class="header">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                🐴 <span>FarmVet</span> Care
+                <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img">
+                <span>FarmVet</span> Care
             </a>
             <button class="hamburger">
                 <span class="bar"></span>
@@ -312,7 +317,7 @@
                 <li><a href="coverage.html">Coverage</a></li>
                 <li><a href="emergency.html" class="active">Emergency</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+
                 <li><a href="resources.html">Resources</a></li>
                 <li class="nav-controls">
                     <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark/light mode">
@@ -363,21 +368,21 @@
         </div>
         <div class="grid">
             <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
-                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem;">
                     <img src="images/equine_care.png" alt="Urgent Equine Care" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <h3>Urgent Equine Care & Colic</h3>
                 <p>Colic requires immediate attention. We provide on-site medical management of colic, including physical exams, rectal palpation, nasogastric intubation, and IV fluid therapy. We also handle acute laminitis, choke, and tying up.</p>
             </div>
             <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
-                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem;">
                     <img src="images/emergency.png" alt="Stable Emergencies" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <h3>Stable Emergencies & Trauma</h3>
                 <p>Rapid response for severe lacerations, puncture wounds, eye injuries, and acute severe lameness (suspected fractures or infections). Our trucks are equipped with portable digital radiography and ultrasound.</p>
             </div>
             <div class="card fade-in" style="border-top: 4px solid #D32F2F;">
-                <div class="card-icon" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; border-radius: 50%; overflow: hidden; background: var(--primary); border: 2px solid rgba(229,169,60,0.4); margin-bottom: 1.5rem; padding: 0;">
+                <div style="width: 100%; height: 200px; border-radius: 8px; overflow: hidden; margin-bottom: 1.5rem;">
                     <img src="images/reproductive_services.png" alt="Livestock Dystocia" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <h3>Livestock Dystocia</h3>
@@ -553,16 +558,16 @@
                 <h2 style="color: #D32F2F; margin-bottom: 0.5rem;">Recommended Barn First Aid Kit</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Every barn or stable manager should keep these medical supplies stocked and readily accessible in case of emergency.</p>
                 
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 260px; margin: 0 auto;">
                     <!-- Column 1 -->
                     <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
-                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy); text-align: left;">
                             <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
                             </span>
                             <span>Bandaging Supplies</span>
                         </h4>
-                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                        <div class="kit-item-list">
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Non-stick gauze pads</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Elastic bandages (Vetrap)</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Cotton roll padding</div>
@@ -572,13 +577,13 @@
                     
                     <!-- Column 2 -->
                     <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
-                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy); text-align: left;">
                             <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                             </span>
                             <span>Instruments & Tools</span>
                         </h4>
-                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                        <div class="kit-item-list">
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Veterinary thermometer</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Bandage shears (heavy)</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Clean medical bucket</div>
@@ -588,13 +593,13 @@
                     
                     <!-- Column 3 -->
                     <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
-                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy);">
+                        <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy); text-align: left;">
                             <span style="display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; background: rgba(211, 47, 47, 0.08); color: #D32F2F; flex-shrink: 0;">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"></path></svg>
                             </span>
                             <span>Antiseptics & Cleansers</span>
                         </h4>
-                        <div class="kit-item-list" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+                        <div class="kit-item-list">
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Chlorhexidine scrub</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Sterile saline flush</div>
                             <div class="kit-item" style="font-size: 0.85rem;"><span class="bullet" style="color: var(--highlight); margin-right: 6px;">•</span> Antiseptic ointment</div>
@@ -631,7 +636,7 @@
                     <div style="background: var(--navy); color: var(--white); padding: 3rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 35px rgba(27, 42, 71, 0.1);">
                         <h4 style="color: var(--highlight); font-size: 1rem; text-transform: uppercase; margin-bottom: 0.5rem;">After-Hours Dispatch Line</h4>
                         <h2 style="color: var(--white); font-size: 2.2rem; margin-bottom: 1.5rem;">1-800-VET-FARM</h2>
-                        <p style="font-size: 0.9rem; color: #B0BEC5; margin-bottom: 0;">Paging service averages a 15-minute veterinarian callback response time for critical equine & herd calls.</p>
+                        <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 0;">Paging service averages a 15-minute veterinarian callback response time for critical equine & herd calls.</p>
                     </div>
                 </div>
             </div>
@@ -690,20 +695,46 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>FarmVet Care</h4>
-                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                    <div class="logo" style="margin-bottom: 1.2rem; color: var(--white); font-size: 1.4rem;">
+                        <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img" style="filter: brightness(2) saturate(1.2); height: 35px;">
+                        <span>FarmVet</span> Care
+                    </div>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock directly at your farm.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-link" aria-label="Facebook">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Instagram">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Twitter">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="YouTube">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
-                    <a href="services.html">Services</a>
+                    <a href="services.html">Our Services</a>
                     <a href="coverage.html">Coverage Areas</a>
                     <a href="emergency.html">Emergency Care</a>
-                    <a href="about.html">About Us</a>
+                    <a href="about.html">About Our Clinic</a>
+                    <a href="resources.html">Client Resources</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Emergency Contact</h4>
-                    <p>24/7 Equine & Livestock Emergency</p>
-                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                    <h4>Office Contact</h4>
+                    <p>📍 123 FarmVet Road, Suite A<br>Lexington, KY 40502</p>
+                    <p>📞 Office: (859) 555-0199</p>
+                    <p>✉️ info@farmvetcare.com</p>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #8898a0;">Mon - Fri: 8:00 AM - 5:00 PM<br>Sat: 8:00 AM - 12:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h4>24/7 Emergency Dispatch</h4>
+                    <p>For urgent equine or livestock medical care outside office hours, call our team immediately:</p>
+                    <h3 style="color: var(--highlight); font-size: 1.5rem; margin-top: 1rem; white-space: nowrap;">1-800-VET-FARM</h3>
+                    <p style="font-size: 0.85rem; color: #E5A93C; margin-top: 0.5rem; font-weight: 500;">⚠️ On-Call Veterinarian Available</p>
                 </div>
             </div>
             <div class="footer-bottom">

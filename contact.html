@@ -10,8 +10,12 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            column-gap: 4rem;
+            row-gap: 2.5rem;
         }
+        .contact-info-area { grid-column: 1; grid-row: 1; }
+        .contact-form-area { grid-column: 2; grid-row: 1 / span 2; }
+        .contact-map-area { grid-column: 1; grid-row: 2; }
         .form-control {
             width: 100%;
             padding: 1rem;
@@ -20,6 +24,7 @@
             font-family: inherit;
             margin-bottom: 1.5rem;
             background: var(--light-gray);
+            color: inherit;
         }
         .form-control:focus {
             outline: none;
@@ -31,7 +36,7 @@
             min-height: 150px;
         }
         @media (max-width: 1024px) {
-            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+            .contact-grid { display: flex; flex-direction: column; gap: 2.5rem; }
         }
         @media (max-width: 768px) {
             .contact-grid { grid-template-columns: 1fr; }
@@ -46,7 +51,6 @@
         }
         .hours-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             padding-bottom: 0.8rem;
@@ -59,9 +63,11 @@
         .hours-day {
             font-weight: 600;
             color: var(--secondary);
+            flex: 0 0 160px;
         }
         .hours-time {
             color: var(--text-muted);
+            flex: 1;
         }
         .hours-badge {
             background: var(--highlight);
@@ -95,6 +101,20 @@
         .portal-content p {
             color: #E0E0E0;
             margin-bottom: 0;
+        }
+        .btn-portal {
+            background: var(--highlight);
+            color: var(--navy);
+            border-color: var(--highlight);
+            width: 100%;
+            max-width: 250px;
+        }
+        .btn-portal:hover {
+            background: var(--white);
+            color: var(--navy);
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
 
         /* 3. Emergency Checklist Styles */
@@ -135,6 +155,22 @@
                 display: inline-block;
             }
         }
+        
+        @media (max-width: 768px) {
+            .hours-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+                padding-top: 0.8rem;
+            }
+            .hours-day {
+                flex: none;
+            }
+            .hours-badge {
+                display: inline-block;
+                margin-top: 0.3rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -142,7 +178,8 @@
     <header class="header">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                🐴 <span>FarmVet</span> Care
+                <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img">
+                <span>FarmVet</span> Care
             </a>
             <button class="hamburger">
                 <span class="bar"></span>
@@ -156,7 +193,7 @@
                 <li><a href="coverage.html">Coverage</a></li>
                 <li><a href="emergency.html">Emergency</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+
                 <li><a href="resources.html">Resources</a></li>
                 <li class="nav-controls">
                     <button id="theme-toggle-btn" class="theme-toggle" aria-label="Toggle dark/light mode">
@@ -183,7 +220,7 @@
 
     <section class="section container">
         <div class="contact-grid">
-            <div class="fade-in">
+            <div class="fade-in contact-info-area">
                 <h2 style="color: var(--primary);">Get in Touch</h2>
                 <p>Use the form to request a non-emergency appointment or submit a general inquiry. We will respond within one business day.</p>
                 
@@ -204,32 +241,27 @@
                         <h4 style="color: var(--navy); margin-bottom: 0.8rem; font-size: 1rem;">Connect With Us</h4>
                         <div style="display: flex; gap: 12px;">
                             <!-- Facebook -->
-                            <a href="https://facebook.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(27, 73, 56, 0.08); color: var(--primary); transition: var(--transition);" onmouseover="this.style.background='var(--primary)'; this.style.color='var(--white)';" onmouseout="this.style.background='rgba(27, 73, 56, 0.08)'; this.style.color='var(--primary)';" aria-label="Facebook">
+                            <a href="https://facebook.com" target="_blank" class="contact-social-link" aria-label="Facebook">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                             </a>
                             <!-- Instagram -->
-                            <a href="https://instagram.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(27, 73, 56, 0.08); color: var(--primary); transition: var(--transition);" onmouseover="this.style.background='var(--primary)'; this.style.color='var(--white)';" onmouseout="this.style.background='rgba(27, 73, 56, 0.08)'; this.style.color='var(--primary)';" aria-label="Instagram">
+                            <a href="https://instagram.com" target="_blank" class="contact-social-link" aria-label="Instagram">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             </a>
                             <!-- Twitter -->
-                            <a href="https://twitter.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(27, 73, 56, 0.08); color: var(--primary); transition: var(--transition);" onmouseover="this.style.background='var(--primary)'; this.style.color='var(--white)';" onmouseout="this.style.background='rgba(27, 73, 56, 0.08)'; this.style.color='var(--primary)';" aria-label="Twitter">
+                            <a href="https://twitter.com" target="_blank" class="contact-social-link" aria-label="Twitter">
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
                             </a>
                             <!-- YouTube -->
-                            <a href="https://youtube.com" target="_blank" style="display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; border-radius: 50%; background: rgba(27, 73, 56, 0.08); color: var(--primary); transition: var(--transition);" onmouseover="this.style.background='var(--primary)'; this.style.color='var(--white)';" onmouseout="this.style.background='rgba(27, 73, 56, 0.08)'; this.style.color='var(--primary)';" aria-label="YouTube">
+                            <a href="https://youtube.com" target="_blank" class="contact-social-link" aria-label="YouTube">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96c1.71.46 8.59.46 8.59.46s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></svg>
                             </a>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Google Map Card -->
-                <div class="fade-in" style="margin-top: 2rem; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 260px; border: 1px solid rgba(0,0,0,0.05);">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11756.918915668988!2d-83.60621375!3d42.58558485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882357d6b38c2057%3A0x6b84dc61bd9ad55e!2sMilford%2C%20MI%2048381!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="FarmVet Care Clinic Map"></iframe>
-                </div>
             </div>
 
-            <div class="fade-in" style="background: var(--white); padding: 3rem; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.04);">
+            <div class="fade-in contact-form-area" style="background: var(--white); padding: 3rem; border-radius: 12px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.04);">
                 <h3>Appointment Request Form</h3>
                 <form onsubmit="event.preventDefault(); alert('Message sent successfully! We will contact you soon.');">
                     <input type="text" class="form-control" placeholder="Your Name or Farm Name" required>
@@ -246,6 +278,11 @@
                     <textarea class="form-control" placeholder="Please describe your animals and what services you need..." required></textarea>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Request</button>
                 </form>
+            </div>
+            
+            <!-- Google Map Card -->
+            <div class="fade-in contact-map-area" style="border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 260px; border: 1px solid rgba(0,0,0,0.05);">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11756.918915668988!2d-83.60621375!3d42.58558485!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882357d6b38c2057%3A0x6b84dc61bd9ad55e!2sMilford%2C%20MI%2048381!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="100%" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="FarmVet Care Clinic Map"></iframe>
             </div>
         </div>
     </section>
@@ -299,7 +336,7 @@
                     <p>Access your animal's health charts, view past lab results, check visit bills, and request repeat prescription refills online instantly without submitting general request forms.</p>
                 </div>
                 <div style="text-align: center;">
-                    <a href="contact.html" class="btn btn-secondary" style="background: var(--highlight); color: var(--navy); border-color: var(--highlight); width: 100%; max-width: 250px;">Access Client Portal</a>
+                    <a href="contact.html" class="btn btn-portal">Access Client Portal</a>
                 </div>
             </div>
         </div>
@@ -339,20 +376,46 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4>FarmVet Care</h4>
-                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock.</p>
+                    <div class="logo" style="margin-bottom: 1.2rem; color: var(--white); font-size: 1.4rem;">
+                        <img src="images/logo.png" alt="FarmVet Care Logo" class="logo-img" style="filter: brightness(2) saturate(1.2); height: 35px;">
+                        <span>FarmVet</span> Care
+                    </div>
+                    <p>Premium large animal veterinary services providing exceptional care for horses and livestock directly at your farm.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon-link" aria-label="Facebook">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Instagram">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="Twitter">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="#" class="social-icon-link" aria-label="YouTube">
+                            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.518 3.545 12 3.545 12 3.545s-7.518 0-9.388.507a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.87.507 9.388.507 9.388.507s7.518 0 9.388-.507a3.003 3.003 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Quick Links</h4>
-                    <a href="services.html">Services</a>
+                    <a href="services.html">Our Services</a>
                     <a href="coverage.html">Coverage Areas</a>
                     <a href="emergency.html">Emergency Care</a>
-                    <a href="about.html">About Us</a>
+                    <a href="about.html">About Our Clinic</a>
+                    <a href="resources.html">Client Resources</a>
                 </div>
                 <div class="footer-col">
-                    <h4>Emergency Contact</h4>
-                    <p>24/7 Equine & Livestock Emergency</p>
-                    <h3 style="color: var(--highlight);">1-800-VET-FARM</h3>
+                    <h4>Office Contact</h4>
+                    <p>📍 123 FarmVet Road, Suite A<br>Lexington, KY 40502</p>
+                    <p>📞 Office: (859) 555-0199</p>
+                    <p>✉️ info@farmvetcare.com</p>
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color: #8898a0;">Mon - Fri: 8:00 AM - 5:00 PM<br>Sat: 8:00 AM - 12:00 PM</p>
+                </div>
+                <div class="footer-col">
+                    <h4>24/7 Emergency Dispatch</h4>
+                    <p>For urgent equine or livestock medical care outside office hours, call our team immediately:</p>
+                    <h3 style="color: var(--highlight); font-size: 1.5rem; margin-top: 1rem; white-space: nowrap;">1-800-VET-FARM</h3>
+                    <p style="font-size: 0.85rem; color: #E5A93C; margin-top: 0.5rem; font-weight: 500;">⚠️ On-Call Veterinarian Available</p>
                 </div>
             </div>
             <div class="footer-bottom">
