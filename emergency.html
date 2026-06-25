@@ -140,13 +140,15 @@
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
+            justify-content: center !important;
             gap: 10px;
         }
         .kit-item-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 0.8rem;
-            text-align: left;
+            width: fit-content;
+            margin: 0 auto;
         }
         .kit-item {
             display: flex;
@@ -558,7 +560,7 @@
                 <h2 style="color: #D32F2F; margin-bottom: 0.5rem;">Recommended Barn First Aid Kit</h2>
                 <p style="color: var(--text-muted); margin-bottom: 2rem; font-size: 0.95rem;">Every barn or stable manager should keep these medical supplies stocked and readily accessible in case of emergency.</p>
                 
-                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 260px; margin: 0 auto;">
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 400px; margin: 0 auto;">
                     <!-- Column 1 -->
                     <div class="kit-card" style="box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 12px; padding: 1.5rem; background: var(--white);">
                         <h4 style="display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; font-size: 1.1rem; color: var(--navy); text-align: left;">
@@ -620,15 +622,24 @@
                 <div class="split-content fade-in">
                     <h2>Emergency Fees & Call-Out Policies</h2>
                     <p>Emergency medical care requires rapid redeployment of clinical rigs, specialized anesthetics, and after-hours staffing. To maintain service continuity, we enforce clear fee structures:</p>
-                    <ul style="margin-bottom: 2rem;">
-                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Priority Dispatch:</strong> Established clients receive priority paging and lower emergency call rates.
+                    <ul style="margin-bottom: 2rem; list-style: none; padding-left: 0;">
+                        <li style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem; flex-shrink: 0; line-height: 1.4;">✓</span> 
+                            <div style="line-height: 1.6;">
+                                <strong>Priority Dispatch:</strong> Established clients receive priority paging and lower emergency call rates.
+                            </div>
                         </li>
-                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Dispatch Fees:</strong> Call-out rates are tiered based on mileage. After-hours premiums apply to visits between 6:00 PM and 8:00 AM.
+                        <li style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem; flex-shrink: 0; line-height: 1.4;">✓</span> 
+                            <div style="line-height: 1.6;">
+                                <strong>Dispatch Fees:</strong> Call-out rates are tiered based on mileage. After-hours premiums apply to visits between 6:00 PM and 8:00 AM.
+                            </div>
                         </li>
-                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                            <span style="color: #D32F2F; font-size: 1.2rem;">✓</span> <strong>Payment Terms:</strong> Payment is due at the time of emergency treatment via credit card, check, or cash.
+                        <li style="margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 12px;">
+                            <span style="color: #D32F2F; font-size: 1.2rem; flex-shrink: 0; line-height: 1.4;">✓</span> 
+                            <div style="line-height: 1.6;">
+                                <strong>Payment Terms:</strong> Payment is due at the time of emergency treatment via credit card, check, or cash.
+                            </div>
                         </li>
                     </ul>
                 </div>

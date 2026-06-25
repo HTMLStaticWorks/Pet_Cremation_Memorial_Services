@@ -67,14 +67,14 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            color: var(--white);
+            color: #FFFFFF;
         }
         .play-button {
             width: 55px;
             height: 55px;
             border-radius: 50%;
             background: var(--highlight);
-            color: var(--navy);
+            color: #1B2A47;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -98,6 +98,9 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-bottom: 0;
+        }
+        [data-theme="dark"] .video-info p {
+            color: var(--text-main);
         }
 
         /* 2. Industry Resources Styles */
@@ -173,6 +176,9 @@
             color: #E0E0E0;
             margin-bottom: 2rem;
         }
+        [data-theme="dark"] .bulletin-box p {
+            color: var(--white);
+        }
         .bulletin-form {
             display: flex;
             gap: 15px;
@@ -196,6 +202,14 @@
         .bulletin-input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
+        [data-theme="dark"] .bulletin-input {
+            border-color: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.05);
+            color: var(--white);
+        }
+        [data-theme="dark"] .bulletin-input::placeholder {
+            color: rgba(0,0,0,0.5);
+        }
         .bulletin-btn {
             background: var(--highlight);
             color: var(--navy);
@@ -205,6 +219,9 @@
             border: none;
             cursor: pointer;
             transition: var(--transition);
+        }
+        [data-theme="dark"] .bulletin-btn {
+            color: var(--white);
         }
         .bulletin-btn:hover {
             transform: translateY(-2px);

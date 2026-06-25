@@ -77,6 +77,9 @@
             font-size: 0.75rem;
             font-weight: 700;
         }
+        [data-theme="dark"] .hours-badge {
+            color: var(--white);
+        }
 
         /* 2. Portal Banner Styles */
         .portal-banner {
@@ -102,12 +105,18 @@
             color: #E0E0E0;
             margin-bottom: 0;
         }
+        [data-theme="dark"] .portal-content p {
+            color: var(--white);
+        }
         .btn-portal {
             background: var(--highlight);
             color: var(--navy);
             border-color: var(--highlight);
             width: 100%;
             max-width: 250px;
+        }
+        [data-theme="dark"] .btn-portal {
+            color: var(--white);
         }
         .btn-portal:hover {
             background: var(--white);

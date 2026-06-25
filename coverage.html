@@ -87,6 +87,21 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(229, 169, 60, 0.3);
         }
+        
+        [data-theme="dark"] .zip-checker-container p {
+            color: var(--white) !important;
+        }
+        [data-theme="dark"] .zip-input {
+            border-color: rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.05);
+        }
+        [data-theme="dark"] .zip-input::placeholder {
+            color: rgba(0,0,0,0.5);
+        }
+        [data-theme="dark"] .zip-btn {
+            color: var(--white);
+        }
+
         .zip-result {
             margin-top: 1.2rem;
             padding: 1rem;
@@ -160,6 +175,16 @@
             color: var(--text-muted);
             margin-bottom: 0;
             line-height: 1.5;
+        }
+        
+        [data-theme="dark"] .tier-badge {
+            color: #FFFFFF;
+        }
+        [data-theme="dark"] .tier-distance {
+            color: #5CBA8A;
+        }
+        [data-theme="dark"] .tier-card p {
+            color: var(--text-main);
         }
 
         /* 4. Policy Section Layout */
@@ -323,6 +348,9 @@
             line-height: 1.6;
             max-width: 320px;
             margin-bottom: 2rem;
+        }
+        [data-theme="dark"] .pairing-result-p {
+            color: var(--white);
         }
 
         @media (max-width: 992px) {

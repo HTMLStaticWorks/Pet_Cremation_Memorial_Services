@@ -121,6 +121,11 @@
             color: var(--text-muted);
             margin-bottom: 0;
         }
+        @media (max-width: 1024px) and (min-width: 768px) {
+            .timeline-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
         /* 2. Mobile Capabilities Spotlight Styles */
         .capabilities-split {
@@ -236,7 +241,7 @@
         }
         .specialist-img-container {
             width: 100%;
-            height: 320px;
+            aspect-ratio: 16 / 10;
             overflow: hidden;
             position: relative;
         }
@@ -244,7 +249,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: top center;
+            object-position: center;
             transition: transform 0.5s ease;
         }
         .specialist-card:hover .specialist-img {
@@ -261,6 +266,9 @@
             font-weight: 600;
             font-size: 0.8rem;
             box-shadow: 0 4px 10px rgba(229, 169, 60, 0.3);
+        }
+        [data-theme="dark"] .specialist-badge {
+            color: var(--white);
         }
         .specialist-info {
             padding: 2rem;
@@ -714,7 +722,7 @@
             <div class="timeline-grid">
                 <div class="timeline-card fade-in">
                     <span class="timeline-number">01</span>
-                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                    <div style="aspect-ratio: 16 / 9; width: 100%; overflow: hidden;">
                         <img src="images/workflow_booking.png" alt="Easy Booking" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 1.8rem 1.5rem 1.8rem;">
@@ -725,7 +733,7 @@
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.1s;">
                     <span class="timeline-number">02</span>
-                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                    <div style="aspect-ratio: 16 / 9; width: 100%; overflow: hidden;">
                         <img src="images/workflow_dispatch.png" alt="Custom Dispatch" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 1.8rem 1.5rem 1.8rem;">
@@ -736,7 +744,7 @@
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.2s;">
                     <span class="timeline-number">03</span>
-                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                    <div style="aspect-ratio: 16 / 9; width: 100%; overflow: hidden;">
                         <img src="images/workflow_treatment.png" alt="On-Site Treatment" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 1.8rem 1.5rem 1.8rem;">
@@ -747,7 +755,7 @@
                 
                 <div class="timeline-card fade-in" style="transition-delay: 0.3s;">
                     <span class="timeline-number">04</span>
-                    <div style="height: 160px; width: 100%; overflow: hidden;">
+                    <div style="aspect-ratio: 16 / 9; width: 100%; overflow: hidden;">
                         <img src="images/workflow_records.png" alt="Digital Records" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     <div style="padding: 1.8rem 1.5rem 1.8rem;">
