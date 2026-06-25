@@ -363,6 +363,11 @@
                 gap: 3rem;
             }
         }
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .tiers-grid, .biosecurity-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         @media (max-width: 600px) {
             .zip-input-group {
                 flex-direction: column;
