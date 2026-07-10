@@ -66,13 +66,13 @@
 }
 [data-theme="dark"] .logo {
   color: #5CBA8A;
+  mix-blend-mode: screen;
 }
 [data-theme="dark"] .logo span {
   color: #A8C4B4;
 }
 [data-theme="dark"] .logo-img {
   filter: invert(1) hue-rotate(180deg) brightness(1.5) !important;
-  mix-blend-mode: screen !important;
 }
 [data-theme="dark"] .nav-menu a {
   color: var(--text-main);
