@@ -71,7 +71,8 @@
   color: #A8C4B4;
 }
 [data-theme="dark"] .logo-img {
-  filter: brightness(0) invert(1);
+  filter: invert(1) hue-rotate(180deg) brightness(1.5) !important;
+  mix-blend-mode: screen !important;
 }
 [data-theme="dark"] .nav-menu a {
   color: var(--text-main);
@@ -82,11 +83,12 @@
   background-color: var(--bg-card) !important;
 }
 [data-theme="dark"] .footer {
-  background-color: #0D1610 !important;
+  background-color: #080D0A !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 [data-theme="dark"] .footer-col p,
 [data-theme="dark"] .footer-col a {
-  color: var(--text-muted);
+  color: var(--text-main);
 }
 [data-theme="dark"] .footer-col h4 {
   color: var(--text-main);
@@ -547,7 +549,8 @@ ul {
 }
 
 .section {
-  padding: 5rem 0;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .text-center {
