@@ -1202,4 +1202,9 @@ ul {
   color: var(--white);
 }
 
+.footer-col .logo-img {
+  filter: invert(1) hue-rotate(180deg) brightness(1.5) !important;
+  mix-blend-mode: screen;
+}
+
 
