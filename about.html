@@ -61,9 +61,13 @@
         /* 1. Core Pillars Styles */
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2.5rem;
             margin-top: 3.5rem;
+        }
+        /* Center the 4th pillar card on desktop */
+        .pillars-grid > .pillar-card:last-child:nth-child(4) {
+            grid-column: 2;
         }
         .pillar-card {
             background: var(--white);
@@ -263,15 +267,13 @@
             }
         }
 
-        /* Tablet: center orphan 3rd card in pillars-grid */
-        @media (min-width: 768px) and (max-width: 1024px) {
+        /* Tablet & Mobile Media Queries for Grids */
+        @media (max-width: 1024px) {
             .pillars-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .pillars-grid > *:last-child:nth-child(odd) {
-                grid-column: 1 / -1;
-                max-width: calc(50% - 1rem);
-                justify-self: center;
+            .pillars-grid > .pillar-card:last-child:nth-child(4) {
+                grid-column: auto;
             }
             .support-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -280,6 +282,18 @@
                 grid-column: 1 / -1;
                 max-width: calc(50% - 1rem);
                 justify-self: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+            .support-grid {
+                grid-template-columns: 1fr;
+            }
+            .support-grid > *:last-child:nth-child(odd) {
+                max-width: 100%;
             }
         }
     </style>
